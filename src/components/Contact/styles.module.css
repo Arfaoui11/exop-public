@@ -1,0 +1,14 @@
+.ant-menu-horizontal{
+  justify-content: space-between;
+}
+
+.contactSection{
+  height: 100vh;
+}
+
+@media (max-width:767px) {
+   .contactSection{
+      height: 100%;
+    }
+
+}
