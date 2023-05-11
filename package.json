@@ -13,6 +13,7 @@
     "@types/node": "18.15.11",
     "@types/react": "18.0.34",
     "@types/react-dom": "18.0.11",
+    "animate.css": "^4.1.1",
     "antd": "^5.4.3",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
@@ -21,6 +22,7 @@
     "next": "13.3.0",
     "next-with-less": "^2.0.5",
     "react": "18.2.0",
+    "react-animation-on-scroll": "^5.1.0",
     "react-dom": "18.2.0",
     "styled-components": "^5.3.9",
     "typescript": "5.0.4"
