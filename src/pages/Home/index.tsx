@@ -1,7 +1,7 @@
+import "animate.css/animate.min.css";
 import { Typography } from 'antd';
 import Head from 'next/head';
 const { Paragraph,Title } = Typography;
-
 
 export default function Home() {
   return (

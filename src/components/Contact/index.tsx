@@ -1,5 +1,6 @@
 
 import { Button, Col, Form, Input, Row, Select, Typography } from 'antd';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 import BackgroundImage from '../Images/BackgroundImage';
 import styles from "./styles.module.css";
 const { Paragraph,Title } = Typography;
@@ -25,6 +26,7 @@ const Contact: React.FC = () => {
     <>
       <Row className={styles.contactSection}>
         <Col className='contact-form' xs={24} md={12}>
+          <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1} animateOnce={true}>
         <div style={{ width: "100%" }}>
           <h1>Nous contacter</h1>
           <h5>Contactez notre équipe ici.</h5>
@@ -55,6 +57,7 @@ const Contact: React.FC = () => {
             </Form.Item>
           </Form>
         </div>
+        </AnimationOnScroll>
         </Col>
         <Col xs={0} md={12}>
         <BackgroundImage />
