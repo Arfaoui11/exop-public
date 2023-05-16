@@ -1,0 +1,43 @@
+# Git/Gitlab
+.git
+.gitattributes
+.gitignore
+.gitlab-ci.yml
+*README.md
+
+# Node.js
+/node_modules
+/.pnp
+.pnp.js
+/.next
+
+# Testing
+coverage
+test
+tests
+
+# Production
+build
+scripts
+constants_*
+
+
+
+# npm/yarn debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker
+Dockerfile
+.dockerignore
+
+
+
+# IDE
+.editorconfig
+.eslintignore
+.eslintrc.js
+.prettierrc
+.idea
+/*.bat
