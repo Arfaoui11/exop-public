@@ -1,66 +1,44 @@
 
 import { Button, Layout, Menu } from 'antd';
 import Image from 'next/image';
+import Link from 'next/link';
 import logo from '../../assets/exop.svg';
+import menuData from "../Menu/menuData";
 const {  Content,  Sider ,Footer} = Layout;
-
 
 const Navbar = () => {
 
 return (
   <div className="header" style={{ height:'80px' }}>
   <div className='content-menu' >
-      <div style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%',height:'80px' }}>
-        <div
-          style={{
-            float: 'left',
-            width: 140,
-            height: "100%",
-            display: "flex",
-            alignItems: "center"
-          }}
-        >
-          <Image
-          style={{
-            width: '100%',
-          }}
+      <div className="links">
+        <Link href="/">
+          <div className='logo-header'>
+            <Image
+              className='logo-header-img'
               src={logo}
               alt="logo"
-              
-            />
+              />
           </div>
+
+        </Link>
         <Menu
           mode="horizontal"
           defaultSelectedKeys={['2']}
-          className='InterSemiBoldFont'
-          
+          className='InterSemiBoldFont'          
         >
+          {menuData.map((menuItem, index) => (
+            <>
             <Menu.Item >
-                <span className="nav-text">Connaitre EXOP</span>
+              <Link href={menuItem.path}>
+                  <span className="nav-text">{menuItem.title}</span>
+              </Link>
             </Menu.Item>
-
-            <Menu.Item>
-                <span className="nav-text">Réglementations</span>
-            </Menu.Item>
-           <Menu.Item>
-                <span className="nav-text">Informations utiles</span>
-            </Menu.Item>
-
-            <Menu.Item>
-                <span className="nav-text">E-Services</span>
-            </Menu.Item>
-            
-            <Menu.Item>
-                <span className="nav-text">Réclamations</span>
-            </Menu.Item>
-
-            <Menu.Item>
-                <span className="nav-text">Contact</span>
-            </Menu.Item>
+            </>
+          ))}           
            <Menu.Item className='last-link '>
               <Button type="primary" className='InterSemiBoldFont' >Déposer une requete</Button>
             </Menu.Item>
-
           </Menu>
       </div>
       </div>

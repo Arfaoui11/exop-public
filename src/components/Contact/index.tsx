@@ -2,7 +2,7 @@
 import { Button, Col, Form, Input, Row, Select, Typography } from 'antd';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import BackgroundImage from '../Images/BackgroundImage';
-import styles from "./styles.module.css";
+
 const { Paragraph,Title } = Typography;
 const { Option } = Select;
 const Contact: React.FC = () => {
@@ -24,10 +24,11 @@ const Contact: React.FC = () => {
   );
   return (
     <>
-      <Row className={styles.contactSection}>
+      <Row className="contactSection">
         <Col className='contact-form' xs={24} md={12}>
-          <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1} animateOnce={true}>
+          
         <div style={{ width: "100%" }}>
+          <AnimationOnScroll animateIn="animate__fadeInLeft" duration={1} animateOnce={true}>
           <h1>Nous contacter</h1>
           <h5>Contactez notre équipe ici.</h5>
           <Form name="contact-form" layout="vertical" initialValues={{ remember: true }} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
@@ -56,8 +57,9 @@ const Contact: React.FC = () => {
               <Button type="primary" htmlType="submit" block> Envoyer </Button>
             </Form.Item>
           </Form>
+          </AnimationOnScroll>
         </div>
-        </AnimationOnScroll>
+        
         </Col>
         <Col xs={0} md={12}>
         <BackgroundImage />

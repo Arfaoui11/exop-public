@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Background from '../../../assets/section.png';
+import Background from '../../../assets/images/section.png';
 const BackgroundImage: React.FC = () => {
   return (
     <div style={{ textAlign: 'center', height: '100vh' }}>

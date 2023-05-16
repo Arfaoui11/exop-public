@@ -3,17 +3,10 @@ import Contact from '@src/components/Contact';
 import { Button, Col, Row, Typography } from 'antd';
 const { Paragraph,Title } = Typography;
 
-import { createFromIconfontCN } from '@ant-design/icons';
+import Box from '@src/components/Card';
 import "animate.css";
-import Image from 'next/image';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
-import chart from '../assets/chart-breakout-square.svg';
-import messageChat from '../assets/message-chat-circle.svg';
-import messageSmile from '../assets/message-smile-circle.svg';
-import zap from '../assets/zap.svg';
-const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
-});
+
 
 export default function Home() {
   return (
@@ -36,66 +29,7 @@ export default function Home() {
           </Col> 
         </Row>
         </AnimationOnScroll>
-        <Row gutter={[24, 48]} >
-          <Col  xs={24} sm={12} md={12} lg={6} xl={6}>
-          <AnimationOnScroll animateIn="animate__fadeInUp" duration={1} animateOnce={true}>
-               <div className="card">
-                <div className="icon">
-                    <Image
-                    src={messageChat}
-                    alt="messageChat"
-                    
-                  />
-               </div>
-                  
-                  <h3>Share team inboxes</h3>
-                  <p>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
-              </div>
-          </AnimationOnScroll>
-          </Col>
-          <Col  xs={24} sm={12} md={12} lg={6} xl={6}>
-            <AnimationOnScroll animateIn="animate__fadeInUp" duration={1} animateOnce={true}>
-               <div className="card">
-                  <div className="icon">
-                      <Image
-                      src={zap}
-                      alt="zap"
-                    />
-                  </div>
-                  <h3>Share team inboxes</h3>
-                  <p>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
-              </div>
-              </AnimationOnScroll>
-          </Col>
-          <Col  xs={24} sm={12} md={12} lg={6} xl={6}>
-            <AnimationOnScroll animateIn="animate__fadeInUp" duration={1} animateOnce={true}>
-               <div className="card">
-                  <div className="icon">
-                      <Image
-                      src={chart}
-                      alt="chart"
-                    />
-                  </div>
-                  <h3>Share team inboxes</h3>
-                  <p>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
-              </div>
-              </AnimationOnScroll>
-          </Col>
-          <Col  xs={24} sm={12} md={12} lg={6} xl={6}>
-            <AnimationOnScroll animateIn="animate__fadeInUp" duration={1} animateOnce={true}>
-               <div className="card">
-                  <div className="icon">
-                      <Image
-                      src={messageSmile}
-                      alt="messageSmile"
-                    />
-                  </div>
-                  <h3>Share team inboxes</h3>
-                  <p>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
-              </div>
-              </AnimationOnScroll>
-          </Col>
-        </Row>
+        <Box />
          </div>
        </div>
       

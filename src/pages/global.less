@@ -55,11 +55,14 @@ h3{
 .InterMediumFont{
   font-family: 'InterMedium';
 }
-.content_padding {
+.content_padding,.content-wrapper {
     padding: 0 10% !important;
 }
 .layout_padding {
     padding: 50px 0 !important;
+}
+.pb-3{
+  padding-bottom: 30px;
 }
 .features{
   height: 80vh;
@@ -67,6 +70,9 @@ h3{
 .features h4{
   margin-bottom: 0;
   color: @template-color;
+}
+.page-section{
+  margin-bottom: 60px;
 }
 .request-section { 
     padding: 100px 0px;
@@ -100,13 +106,13 @@ h3{
   background-color: white;
 }
 
-input[type="text"]{
+.contact-form input[type="text"]{
 border: 1px solid #D0D5DD !important;
 box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05) !important;
 border-radius: 8px !important;
 height: 44px;
 }
-.input-phone input{
+.contact-form .input-phone input{
 border: 1px solid #D0D5DD !important;
 box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05) !important;
 border-radius: 0 8px 8px 0 !important;
@@ -132,6 +138,18 @@ input.contact-form-phone{
 }
 
 /**css menu**/
+.ant-menu-light{
+  &.ant-menu-horizontal{
+    :hover,.ant-menu-item-selected{
+      color: @template-color;
+      text-decoration: underline;
+      ::after{
+        border: none;
+      } 
+    }
+  }
+}
+
 .ant-menu-light.ant-menu-horizontal >.ant-menu-item{
   height: 100%;
     display: flex;
@@ -140,13 +158,15 @@ input.contact-form-phone{
 }
 .ant-menu-light.ant-menu-horizontal >.ant-menu-item:hover::after,
 .ant-menu-submenu-open::after,.ant-menu-submenu-active::after
-,.ant-menu-light.ant-menu-horizontal >.ant-menu-submenu:hover::after
+,.ant-menu-light.ant-menu-horizontal >.ant-menu-submenu:hover::after,
+.ant-menu-light.ant-menu-horizontal >.ant-menu-item::after
 {
-  border-bottom-width: 4px ;
-    border-bottom-color: @template-color;
+   border: none;
 }
-.ant-menu-submenu-popup .ant-menu-vertical{
-  box-shadow: none;
+.ant-menu-submenu-popup {
+  .ant-menu-vertical{
+    box-shadow: none;
+  }
 }
 .content-menu{
   padding-left: 10%;
@@ -196,7 +216,133 @@ input.contact-form-phone{
 .card h3{
     color: #101828;
 }
+
 /*********end css card*******/
+/************CSS BTN*************/
+.btn-pdf{
+  .ant-btn-primary{
+    &.ant-btn-background-ghost{
+   color: @template-color;
+    background-color: transparent;
+    border-color: @template-color;
+    min-width: 300px;
+    padding: 15px;
+    height: auto;
+    text-align: left;
+    display: flex;
+    align-items: center;
+   
+  }
+   &.ant-btn-background-ghost:hover{
+   color: white;
+    background-color: @template-color;
+    border-color: @template-color;
+     svg{
+      color: @template-color;
+       background-color: white;
+    }
+  }
+
+}
+.anticon {
+  svg {
+    color: white;
+    background-color: @template-color;
+    padding: 10px;
+    border-radius: 50%;
+    
+    }
+   
+  }
+}
+/*************END CSS BTN************/
+/**********css tabs**************/
+.ant-tabs-card {
+  .ant-tabs-nav{
+    .ant-tabs-tab{
+   background: @template-color;
+  color: white;
+
+  }
+} 
+}
+.ant-tabs-card{
+  .ant-tabs-nav{
+    .ant-tabs-tab-active{
+    background: initial;
+    color: @template-color;
+    .ant-tabs-tab-btn{
+      color: @template-color;
+    }
+    } 
+} 
+}
+
+.ant-tabs-left{
+  .ant-tabs-nav{
+    .ant-tabs-tab{
+  border-left: 4px solid white;
+  
+  }
+} 
+}
+.ant-tabs-left{
+  .ant-tabs-nav{ 
+     
+    .ant-tabs-tab-active{
+      border-left: 4px solid @template-color;
+    }
+  }
+}
+.ant-tabs-top{
+  .ant-tabs-nav {
+    ::before{
+      border-bottom: 1px solid @template-color;
+    }
+       .ant-tabs-tab{
+          border-top: 4px solid white;
+          border-left: none;
+          min-width: 150px;
+          align-items: center;
+          justify-content: center;
+          font-size: 15px;
+      }
+      .ant-tabs-tab-active
+      {
+        border:1px solid @template-color;
+        border-top: 4px solid @template-color;
+      
+      }
+  }
+}
+.ant-tabs-tab{
+  background: @template-color;
+  color: white;
+}
+/****************************/
+/*********css collaps***********/
+.ant-collapse{
+  border-left-color: @template-color;
+  border-right-color: @template-color;
+  border-color: @template-color;
+  .ant-collapse-content{
+    border-color: @template-color;
+  }
+ .ant-collapse-item {
+  border-color: @template-color;
+    .ant-collapse-header{
+    color: @template-color;
+    border-color: @template-color;
+    font-weight: 500;
+    } 
+  }
+  .ant-collapse {
+    .ant-collapse-content{
+    
+  }
+  }
+}
+/**********************/
  @media (min-width: 320px) {
     .features{height: auto;}
   }

@@ -1,17 +1,16 @@
 import { Col, Divider, Layout, Row } from 'antd';
 import Image from 'next/image';
 import logo from '../../assets/whitelogo.svg';
-import styles from "./styles.module.css";
 const { Footer} = Layout;
 const FooterBottom = () => {
   return (
-     <Footer className={styles.footer}>
+     <Footer className="footer">
       
       <div>
         <Row>
           <Col span={24}>
           <Image
-          className={styles.logoFooter}
+          className="logoFooter"
             style={{
               width: '100%',
             }}
@@ -21,7 +20,7 @@ const FooterBottom = () => {
               />
           </Col>
           <Col span={24}>
-            <div className={styles.menuFooter}>
+            <div className="menuFooter">
               <ul>
                 <li><a >Connaitre EXOP</a></li>
                 <li><a >Réglementations</a></li>
@@ -35,10 +34,10 @@ const FooterBottom = () => {
           <Divider />
 
         </Row>
-        <Row  className={styles.copyrightSection}>
-          <Col className={styles.copyright} xs={24} sm={24} md={12}>© 2023 BCT. Tous droits réserves.</Col>
+        <Row  className="copyrightSection">
+          <Col className="copyright" xs={24} sm={24} md={12}>© 2023 BCT. Tous droits réserves.</Col>
           <Col xs={24} sm={24} md={12}>
-            <div className={styles.copyrightSection}>
+            <div className="copyrightSection">
           <ul>
             <li><a>Termes et services</a></li>
             <li><a>Vie privée</a></li>
