@@ -1,9 +1,9 @@
-import { Spin } from 'antd';
-import React from 'react';
+import { Spin } from "antd";
+import React from "react";
 
 const Spinner: React.FC = () => (
   <div className="example">
-    <Spin />
+    <Spin delay={30} />
   </div>
 );
 
