@@ -1,18 +1,21 @@
 import { Button, Layout, Menu } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import logo from "../../assets/exop.svg";
 import menuData from "../Menu/menuData";
 const { Content, Sider, Footer } = Layout;
 
 const Navbar = () => {
+  const [isActive, setIsActive] = useState(false);
   return (
     <div className="header">
       <div className="content-menu">
         <div className="links">
-          <Link href="/">
+          <Link href="/" onClick={() => setIsActive(false)}>
             <div className="logo-header">
               <Image className="logo-header-img" src={logo} alt="logo" />
+              {isActive}
             </div>
           </Link>
           <Menu
@@ -23,7 +26,11 @@ const Navbar = () => {
             {menuData.map((menuItem, index) => (
               <>
                 <Menu.Item key={index}>
-                  <Link href={menuItem.path}>
+                  <Link
+                    href={menuItem.path}
+                    onClick={() => setIsActive(true)}
+                    className={`${isActive ? "active" : ""}`}
+                  >
                     <span className="nav-text">{menuItem.title}</span>
                   </Link>
                 </Menu.Item>

@@ -24,12 +24,17 @@
 html {
   scroll-behavior: smooth;
 }
+
 html,
 body {
   font-family: "Inter";
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+#contact-form {
+  scroll-behavior: smooth;
 }
 .container {
   max-width: 100%;
@@ -163,10 +168,13 @@ input.contact-form-phone {
   &.ant-menu-horizontal {
     :hover,
     .ant-menu-item-selected {
-      color: @template-color;
-      text-decoration: underline;
-      ::after {
-        border: none;
+      color: rgba(0, 0, 0, 0.88);
+      .active {
+        color: @template-color;
+        text-decoration: underline;
+        ::after {
+          border: none;
+        }
       }
     }
   }

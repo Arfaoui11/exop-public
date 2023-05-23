@@ -23,7 +23,7 @@ const menuData: Menu[] = [
   },
   {
     title: "Contact",
-    path: "#contact-form",
+    path: "/#contact-form",
   },
 ];
 export default menuData;
