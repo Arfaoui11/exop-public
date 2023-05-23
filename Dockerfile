@@ -3,12 +3,13 @@ FROM node:14
 ENV PORT=3002
 WORKDIR /app/exop-public
 
-COPY . .
+
+COPY package*.json ./
 
 RUN npm install
 
+COPY . .
 
-#COPY package*.json ./
 RUN npm run build
 
 EXPOSE $PORT
