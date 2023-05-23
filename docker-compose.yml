@@ -5,7 +5,16 @@ services:
     image: public
     build: .
     container_name: public
-
     restart: always
     ports:
       - "3002:3002"
+    networks:
+      public-network:
+        ipv4_address: 172.21.0.2
+
+networks:
+  public-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
