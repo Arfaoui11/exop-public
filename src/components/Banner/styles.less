@@ -1,7 +1,7 @@
 .slide {
   position: relative !important;
   display: block;
-  color: #6f83a9;
+  color: #ffffff;
   max-height: 721px;
   overflow: hidden;
   height: 90vh;
@@ -17,8 +17,8 @@
   height: 100%;
   background: #002873;
   z-index: 3;
-  -webkit-clip-path: polygon(0 0, 60% 0, 37% 100%, 0% 100%);
-  clip-path: polygon(0 0, 56% 0, 50% 100%, 0% 100%);
+  //-webkit-clip-path: polygon(0 0, 60% 0, 37% 100%, 0% 100%);
+  //clip-path: polygon(0 0, 56% 0, 50% 100%, 0% 100%);
 }
 .bannerContainer {
   display: flex;
@@ -26,16 +26,12 @@
   -ms-flex-align: center;
   align-items: center;
   padding-left: 10%;
-  width: 100%;
-  justify-content: space-between;
+  padding-right: 10%;
+  // width: 100%;
+  //justify-content: space-between;
   height: 100%;
 }
 
-.detailBox {
-  width: 34%;
-  z-index: 4;
-  color: #ffffff;
-}
 .titleslide {
   font-size: 60px;
   font-family: "InterSemiBold";
@@ -46,10 +42,16 @@
   font-family: "InterRegular";
   margin: 30px 0;
 }
-@media (max-width: 320px) {
-  .detailBox {
-    width: 60%;
+.btn-banner {
+  display: flex;
+  line-height: 40px;
+  height: 40px;
+  align-items: center;
+  img {
+    margin-right: 5px;
   }
+}
+@media (max-width: 320px) {
   .titleslide {
     font-size: 20px;
   }
@@ -62,9 +64,6 @@
   }
 }
 @media (min-width: 320px) {
-  .detailBox {
-    width: 60%;
-  }
   .titleslide {
     font-size: 20px;
   }
@@ -73,13 +72,10 @@
     margin: 20px 0;
   }
   .bannerBgContainer {
-    clip-path: polygon(0 0, 75% 0, 65% 100%, 0% 100%);
+    //clip-path: polygon(0 0, 75% 0, 65% 100%, 0% 100%);
   }
 }
 @media (min-width: 360px) {
-  .detailBox {
-    width: 50%;
-  }
   .titleslide {
     font-size: 20px;
   }
@@ -88,16 +84,13 @@
     margin: 20px 0;
   }
   .bannerBgContainer {
-    clip-path: polygon(0 0, 75% 0, 65% 100%, 0% 100%);
+    //clip-path: polygon(0 0, 75% 0, 65% 100%, 0% 100%);
   }
   .slide {
     height: 60vh;
   }
 }
 @media (min-width: 576px) {
-  .detailBox {
-    width: 40%;
-  }
   .titleslide {
     font-size: 22px;
   }
@@ -106,7 +99,7 @@
     margin: 20px 0;
   }
   .bannerBgContainer {
-    clip-path: polygon(0 0, 56% 0, 50% 100%, 0% 100%);
+    //clip-path: polygon(0 0, 56% 0, 50% 100%, 0% 100%);
   }
   .slide {
     height: 60vh;
@@ -114,9 +107,6 @@
 }
 
 @media (min-width: 768px) {
-  .detailBox {
-    width: 34%;
-  }
   .titleslide {
     font-size: 28px;
   }
@@ -127,9 +117,6 @@
 }
 
 @media (min-width: 992px) {
-  .detailBox {
-    width: 34%;
-  }
   .titleslide {
     font-size: 40px;
   }
@@ -144,9 +131,6 @@
 @media (min-width: 1024px) {
 }
 @media (min-width: 1200px) {
-  .detailBox {
-    width: 34%;
-  }
   .titleslide {
     font-size: 60px;
   }
@@ -155,6 +139,6 @@
     margin: 30px 0;
   }
   .bannerBgContainer {
-    clip-path: polygon(0 0, 56% 0, 50% 100%, 0% 100%);
+    //clip-path: polygon(0 0, 56% 0, 50% 100%, 0% 100%);
   }
 }

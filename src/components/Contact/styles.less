@@ -1,14 +1,28 @@
-.ant-menu-horizontal{
+@import url("../../theme/variables.less");
+.ant-menu-horizontal {
   justify-content: space-between;
 }
 
-.contactSection{
+.contactSection {
   height: 100vh;
 }
+.player-wrapper {
+  background-color: @template-color;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .react-player {
+    width: 100% !important;
+    // margin-right: 10%;
+  }
+  div {
+    width: 100% !important;
+  }
+}
 
-@media (max-width:767px) {
-   .contactSection{
-      height: 100%;
-    }
-
+@media (max-width: 767px) {
+  .contactSection {
+    height: 100%;
+  }
 }

@@ -1,10 +1,12 @@
 import { Button, Col, Form, Input, Row, Select, Typography } from "antd";
+import React from "react";
 import { AnimationOnScroll } from "react-animation-on-scroll";
-import BackgroundImage from "../Images/BackgroundImage";
-
+import Video from "../Media/Video";
 const { Paragraph, Title } = Typography;
 const { Option } = Select;
 const Contact: React.FC = () => {
+  const video = "@src/assets/videos/video.mp4";
+
   const onFinish = (values: any) => {
     console.log("Success:", values);
   };
@@ -124,8 +126,10 @@ const Contact: React.FC = () => {
             </AnimationOnScroll>
           </div>
         </Col>
-        <Col xs={0} md={12}>
-          <BackgroundImage />
+        <Col xs={0} md={12} className="player-wrapper">
+          <Row>
+            <Video />
+          </Row>
         </Col>
       </Row>
     </>
