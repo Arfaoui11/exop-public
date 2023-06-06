@@ -1,11 +1,11 @@
 import Banner from "@src/components/Banner";
-import Contact from "@src/components/Contact";
-import { Button, Col, Row, Typography } from "antd";
-const { Paragraph, Title } = Typography;
-
 import Box from "@src/components/Card";
+import Contact from "@src/components/Contact";
 import "animate.css";
+import { Button, Col, Row, Typography } from "antd";
+import Link from "next/link";
 import { AnimationOnScroll } from "react-animation-on-scroll";
+const { Paragraph, Title } = Typography;
 
 export default function Home() {
   return (
@@ -66,7 +66,9 @@ export default function Home() {
             <Row justify="center" align="middle">
               <Col>
                 <Button type="primary" className="InterSemiBoldFont">
-                  Déposer une requete
+                  <Link target="_blanck" href="http://192.168.26.135:3001/">
+                    Déposer une requete
+                  </Link>
                 </Button>
               </Col>
             </Row>

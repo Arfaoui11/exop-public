@@ -1,9 +1,9 @@
 import { Button, Col, Row, Typography } from "antd";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimationOnScroll } from "react-animation-on-scroll";
-import Background from "../../assets/images/banner.gif";
-//import styles from "./styles.module.css";
 import { TopIcon } from "../../assets/icons";
+import Background from "../../assets/images/banner.gif";
 const { Paragraph, Title } = Typography;
 export default function Banner() {
   return (
@@ -51,7 +51,12 @@ export default function Banner() {
                           icon={<TopIcon />}
                           className="btn-banner"
                         >
-                          Déposer une requête
+                          <Link
+                            target="_blanck"
+                            href="http://192.168.26.135:3001/"
+                          >
+                            Déposer une requete
+                          </Link>
                         </Button>
                       </AnimationOnScroll>
                     </Col>

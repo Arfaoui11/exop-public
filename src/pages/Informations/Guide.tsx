@@ -6,7 +6,7 @@ const { Paragraph, Title } = Typography;
 const Guide: React.FC = () => {
   return (
     <>
-      <div className="content-wrapper page-section">
+      <div className="page-section">
         <Row>
           <Col md={24}>
             <Title level={4}>Title Documnet</Title>

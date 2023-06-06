@@ -1,13 +1,14 @@
 import "animate.css/animate.min.css";
-import { Row, Tabs, TabsProps, Typography } from "antd";
+import { Collapse, Row, TabsProps, Typography } from "antd";
 import Image from "next/image";
 import imgAbout from "../../../assets/images/question.png";
 import Acquisition from "./Acquisition";
 import Declaration from "./Declaration";
 import Investment from "./Investment";
 import Notions from "./Notions";
+const { Panel } = Collapse;
 const { Paragraph, Title } = Typography;
-
+interface IMainLayoutProps {}
 const faqData: TabsProps["items"] = [
   {
     label: "Investissement à l'étranger",
@@ -30,7 +31,7 @@ const faqData: TabsProps["items"] = [
     key: "faq-acquisition",
   },
 ];
-export default function Faq() {
+const Faq: React.FC<IMainLayoutProps> = () => {
   return (
     <>
       <Title level={5} className="pb-3">
@@ -47,7 +48,31 @@ export default function Faq() {
           investir en Tunisie.
         </Row>
       </Title>
-      <Tabs defaultActiveKey="1" type="card" centered items={faqData} />
+      <Collapse
+        defaultActiveKey={["1"]}
+        ghost
+        size="large"
+        accordion
+        className="accordion-faq3"
+      >
+        {faqData.map((invItems, index) => (
+          <>
+            <Panel header={invItems.label} key={invItems.key}>
+              <p>{invItems.children}</p>
+            </Panel>
+          </>
+        ))}
+      </Collapse>
+      {/*  <Tabs
+        defaultActiveKey="1"
+        type="card"
+        centered
+        items={faqData}
+        // tabPosition="left"
+      />
+       */}
     </>
   );
-}
+};
+
+export default Faq;
