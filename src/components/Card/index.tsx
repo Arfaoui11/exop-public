@@ -13,30 +13,30 @@ const IconFont = createFromIconfontCN({
 const featuresData = [
   {
     icon: <BreakoutIcon />,
-    title: "Share team inboxes",
+    title: "Parcours Digitalisé",
     paragraph:
-      "Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+      "Déposez, là où vous êtes, votre requête de change auprès de la Banque Centrale de Tunisie par un simple clic.",
     key: 1,
   },
   {
     icon: <MessageIcon />,
-    title: "Share team inboxes",
+    title: "Suivi centralisé",
     paragraph:
-      "Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+      "Suivez sur EXOP l'avancement du traitement de votre requête en temps réel jusqu'à la délivrance de la décision de la BCT.",
     key: 2,
   },
   {
     icon: <MessageSmileIcon />,
-    title: "Share team inboxes",
+    title: "Transactions sécurisées",
     paragraph:
-      "Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+      "Introduisez vos données sur EXOP en toute sécurité et confidentialité.",
     key: 3,
   },
   {
     icon: <ZapIcon />,
-    title: "Share team inboxes",
+    title: "Support de proximité",
     paragraph:
-      "Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+      "Restez en contact avec les services de la BCT pour tout renseignement.",
     key: 4,
   },
 ];
@@ -46,11 +46,20 @@ export default function Box() {
       <Row gutter={[24, 48]}>
         {featuresData.map((feature, index) => (
           <>
-            <Col xs={24} sm={12} md={12} lg={6} xl={6} key={feature.key}>
+            <Col
+              xs={24}
+              sm={12}
+              md={12}
+              lg={6}
+              xl={6}
+              key={feature.key}
+              className="ani-card"
+            >
               <AnimationOnScroll
                 animateIn="animate__fadeInUp"
                 duration={1}
                 animateOnce={true}
+                className="ani"
               >
                 <div className="card">
                   <div className="icon">{feature.icon}</div>

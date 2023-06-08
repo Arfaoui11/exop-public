@@ -24,8 +24,7 @@ export default function Banner() {
                       duration={1}
                       animateOnce={true}
                     >
-                      Découvrez notre nouvelle
-                      <br /> plateforme EXOP.
+                      Découvrez EXOP
                     </AnimationOnScroll>
                   </div>
                   <div className="textslide">
@@ -34,8 +33,11 @@ export default function Banner() {
                       duration={2}
                       animateOnce={true}
                     >
-                      Une platforme digitale pour les citoyens, les opérateurs
-                      économiques ainsi que le personnel de la banque centrale.
+                      Une plateforme digitale de la Banque Centrale de Tunisie
+                      dédiée au dépôt des requêtes qui concernent les opérations
+                      en capital, les opérations de commerce extérieur et les
+                      opérations courantes. Elle est destinée aux intermédiaires
+                      agrées, opérateurs économiques et citoyens
                     </AnimationOnScroll>
                   </div>
 
