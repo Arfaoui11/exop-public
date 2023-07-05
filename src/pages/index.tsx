@@ -66,7 +66,7 @@ export default function Home() {
             <Row justify="center" align="middle">
               <Col>
                 <Button type="primary" className="InterSemiBoldFont">
-                  <Link target="_blanck" href="http://192.168.26.135:3001/">
+                  <Link target="_blanck" href="http://192.168.34.41:3001/">
                     Déposer une requete
                   </Link>
                 </Button>

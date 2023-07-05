@@ -38,7 +38,7 @@ const Navbar = () => {
             ))}
             <Menu.Item className="contact-form" key="contact">
               <Button type="primary" className="InterSemiBoldFont">
-                <Link target="_blanck" href="http://192.168.26.135:3001/">
+                <Link target="_blanck" href="http://192.168.34.41:3001/">
                   Déposer une requete
                 </Link>
               </Button>

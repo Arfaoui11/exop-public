@@ -55,7 +55,7 @@ export default function Banner() {
                         >
                           <Link
                             target="_blanck"
-                            href="http://192.168.26.135:3001/"
+                            href="http://192.168.34.41:3001/"
                           >
                             Déposer une requete
                           </Link>
