@@ -21,12 +21,12 @@ const faqData: TabsProps["items"] = [
     key: "faq-notion",
   },
   {
-    label: "Déclaration d'investissement en Tunisie",
+    label: "Investissement en Tunisie",
     children: <Declaration />,
     key: "faq-declaration",
   },
   {
-    label: "Acquisition d'un bien immeuble en Tunisie",
+    label: "Tunisiens résidents à l'étranger",
     children: <Acquisition />,
     key: "faq-acquisition",
   },

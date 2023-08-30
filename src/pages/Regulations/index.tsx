@@ -43,15 +43,15 @@ export default function Regulations() {
           */}
         <Row>
           <Col xs={24} md={18}>
-            <Title level={3}>Texte introductif</Title>
             <Paragraph className="pb-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum
+              Veuillez visiter la rubrique{" "}
+              <a
+                href="https://www.bct.gov.tn/bct/siteprod/page.jsp?id=67"
+                target="_blanck"
+              >
+                « Réglementation des Changes »{" "}
+              </a>
+              dans le site officiel de la Banque Centrale de Tunisie
             </Paragraph>
             <Filter />
             <Divider />

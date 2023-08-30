@@ -6,18 +6,21 @@ const { Panel } = Collapse;
 
 const invData = [
   {
-    header: "Comment avoir sa fiche d'investissement",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    header:
+      "Est-ce qu’une personne physique résidente peut investir à l’étranger librement?",
+    text: "Les Personnes Physiques Résidentes ne peuvent investir à l’étranger qu’après autorisation préalable de la Banque Centrale de Tunisie donnée après avis favorable du Ministère des Finances à l’exception des personnes physiques résidentes titulaires de Comptes Personnes Physiques Résidentes ;",
     key: "1",
   },
   {
-    header: "Question 2",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ",
+    header:
+      "Est-ce qu’une personne physique ou morale résidente peut acquérir en devises auprès d’une autre personne physique ou morale résidente une part au capital d’une société installée à l’étranger?",
+    text: "Le règlement du prix d’acquisition par une personne physique ou morale résidente d’une part qu’elle déteint au capital d’une société établie à l’étranger une autre personne physique ou morale résidente doit s’effectuer en dinars tunisiens.L’opération d’acquisition est assujettie à l’obligation de déclaration à la Banque centrale de Tunisie. Il en est de même pour les titres de capital détenus dans des sociétés établies en Tunisie et créées sous le statut de non-résidentes",
     key: "2",
   },
   {
-    header: "Question 3",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    header:
+      "Est-ce qu’une personne physique ou morale résidente peut loger dans un compte en devises en Tunisie les dividendes générés par sa prise de participation au capital d’une société non-résidente établie en Tunisie ou par son investissement réalisé à l’étranger ?",
+    text: "Les personnes physiques ou morales résidentes ne peuvent pas loger les dividendes générés suite à des prises de participation au capital des sociétés non-résidentes établies ou au titre de leurs participations dans des sociétés établies à l’étranger.\nCes revenus doivent être rapatriés en totalité en Tunisie et cédés en dinars tunisiens.",
     key: "3",
   },
 ];
