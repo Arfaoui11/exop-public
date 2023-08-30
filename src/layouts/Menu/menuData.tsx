@@ -19,7 +19,7 @@ const menuData: Menu[] = [
   },
   {
     title: "Réclamations",
-    path: "/404",
+    path: "/Claims",
   },
   {
     title: "Contact",
