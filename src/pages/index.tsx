@@ -66,8 +66,11 @@ export default function Home() {
             <Row justify="center" align="middle">
               <Col>
                 <Button type="primary" className="InterSemiBoldFont">
-                  <Link target="_blanck" href="http://192.168.34.41:3001/">
-                    Déposer une requete
+                  <Link
+                    target="_blanck"
+                    href="http://192.168.34.135:7001/exop-frontoffice/"
+                  >
+                    Déposer une requête
                   </Link>
                 </Button>
               </Col>
