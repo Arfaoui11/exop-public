@@ -5,6 +5,7 @@ import { useState } from "react";
 import logo from "../../assets/exop.svg";
 import menuData from "../Menu/menuData";
 const { Content, Sider, Footer } = Layout;
+const {Item} = Menu;
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -25,7 +26,7 @@ const Navbar = () => {
           >
             {menuData.map((menuItem, index) => (
               <>
-                <Menu.Item key={index}>
+                <Item key={index}>
                   <Link
                     href={menuItem.path}
                     onClick={() => setIsActive(true)}
@@ -33,10 +34,10 @@ const Navbar = () => {
                   >
                     <span className="nav-text">{menuItem.title}</span>
                   </Link>
-                </Menu.Item>
+                </Item>
               </>
             ))}
-            <Menu.Item className="contact-form" key="contact">
+            <Item className="contact-form" key="contact">
               <Button type="primary" className="InterSemiBoldFont">
                 <Link
                   target="_blanck"
@@ -45,7 +46,7 @@ const Navbar = () => {
                   Déposer une requête
                 </Link>
               </Button>
-            </Menu.Item>
+            </Item>
           </Menu>
         </div>
       </div>

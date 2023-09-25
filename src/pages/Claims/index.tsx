@@ -7,7 +7,6 @@ import { Alert, Button, Form, Input, Modal, Upload } from 'antd';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-
 export default function Claims() {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -19,27 +18,28 @@ export default function Claims() {
   async function  submit (values: ClaimType) {
     setIsLoading(true);
     const formData = new FormData();
-    formData.append('properties', JSON.stringify(values));
     if (values.files)
     values.files.fileList.forEach((file) => {
       const blob = new Blob([file], { type: file.type });
       formData.append(`files`, blob, file.name);
     });
+    delete values.files;
+    formData.append('properties', JSON.stringify(values));
     try {
-      const response = await fetch('http://192.168.34.135:7001/api/claims', {
+      const response = await fetch('http://192.168.34.135:7001/api/claims/public', {
       method: 'POST',
       body: formData,
     })
       const data = await response.json();
-      const msg = data.error as ObjectKey;
 
-      //if (data.error){
-      //setError(serverErrors[msg])
-      //setIsLoading(false);
-      //}
-      //else {
+      if (data.error){
+      const errorMsg = data.message as ObjectKey;
+      setError(serverErrors[errorMsg])
+      setIsLoading(false);
+      }
+      else {
         setIsModalOpen(true)
-      //};
+      };
     } catch (error) {
       setError('Network Error');
       setIsLoading(false);
@@ -49,6 +49,11 @@ export default function Claims() {
     setIsLoading(false);
     setIsModalOpen(false);
     router.push('/')
+  };
+
+    const handleCancel = () => {
+    setIsLoading(false);
+    setIsModalOpen(false);
   };
   return (
   <>
@@ -74,14 +79,13 @@ export default function Claims() {
     <Item
       label="Référence requête"
       name="reference"
-      rules={[{ required: true, message: 'champs obligatoire!' }]}
     >
       <Input />
     </Item>
     
     <Item
       label="Objet"
-      name="objet"
+      name="object"
       rules={[{ required: true, message: 'champs obligatoire!' }]}
     >
       <Input />
@@ -115,9 +119,13 @@ export default function Claims() {
     {error && ( <Alert message={error} type="error" /> )}
   </Form>
   </div>
+  
   <Modal 
     title="Succès" 
-    open={isModalOpen}  
+    centered
+    open={isModalOpen} 
+    onCancel={handleCancel} 
+    closable={false}
     footer={[<Button key="submit" type="primary"  onClick={handleOk}>OK</Button>]}>
     <p>Réclamation envoyée</p>
   </Modal>

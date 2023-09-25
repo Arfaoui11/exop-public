@@ -1,7 +1,7 @@
 import { ServerErrorsType } from "@src/types/errors";
 
 export const serverErrors: ServerErrorsType = {
-    unauthorized: 'Non authorisé',
+    FAILED_VALIDATION: 'Champs invalides'
 }
 
 export type ObjectKey = keyof typeof serverErrors;
