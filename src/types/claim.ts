@@ -1,8 +1,9 @@
 export type ClaimType = {
-  id: string;
   object: string;
   description: string;
-  files: {
+  email: string;
+  reference?: string;
+  files?: {
     file: File;
     fileList: File[];
   };

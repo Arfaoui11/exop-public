@@ -1,3 +1,3 @@
 export type ServerErrorsType = {
-  unauthorized: string;
+  FAILED_VALIDATION:string;
 }
