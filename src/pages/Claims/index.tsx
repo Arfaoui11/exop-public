@@ -26,7 +26,7 @@ export default function Claims() {
     delete values.files;
     formData.append('properties', JSON.stringify(values));
     try {
-      const response = await fetch('http://192.168.34.135:7001/api/claims/public', {
+      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_API_URL+'/claims/public', {
       method: 'POST',
       body: formData,
     })
