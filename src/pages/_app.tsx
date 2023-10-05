@@ -5,6 +5,7 @@ import "../components/Banner/styles.less";
 import "../components/Contact/styles.less";
 import "../layouts/Footer/styles.less";
 import "../layouts/Header/styles.less";
+import "../pages/Claims/styles.less";
 import "../pages/Informations/styles.less";
 import "./global.less";
 export default function App({ Component, pageProps }: AppProps) {
