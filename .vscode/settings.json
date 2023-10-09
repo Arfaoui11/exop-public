@@ -18,5 +18,6 @@
   },
   "[less]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "git-blame.gitWebUrl": ""
 }
