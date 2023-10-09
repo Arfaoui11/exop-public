@@ -44,31 +44,29 @@ export default function Box() {
   return (
     <>
       <Row gutter={[24, 48]}>
-        {featuresData.map((feature, index) => (
-          <>
-            <Col
-              xs={24}
-              sm={12}
-              md={12}
-              lg={6}
-              xl={6}
-              key={feature.key}
-              className="ani-card"
+        {featuresData.map(({ key, title, icon, paragraph }) => (
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={6}
+            xl={6}
+            key={key}
+            className="ani-card"
+          >
+            <AnimationOnScroll
+              animateIn="animate__fadeInUp"
+              duration={1}
+              animateOnce={true}
+              className="ani"
             >
-              <AnimationOnScroll
-                animateIn="animate__fadeInUp"
-                duration={1}
-                animateOnce={true}
-                className="ani"
-              >
-                <div className="card">
-                  <div className="icon">{feature.icon}</div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.paragraph}</p>
-                </div>
-              </AnimationOnScroll>
-            </Col>
-          </>
+              <div className="card">
+                <div className="icon">{icon}</div>
+                <h3>{title}</h3>
+                <p>{paragraph}</p>
+              </div>
+            </AnimationOnScroll>
+          </Col>
         ))}
       </Row>
     </>
