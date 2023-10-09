@@ -1,11 +1,11 @@
-import { Button, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import logo from "../../assets/exop.svg";
-import menuData from "../Menu/menuData";
+import { renderMenuItems } from "../Menu/menuData";
 const { Content, Sider, Footer } = Layout;
-const {Item} = Menu;
+const { Item } = Menu;
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -22,32 +22,9 @@ const Navbar = () => {
           <Menu
             mode="horizontal"
             defaultSelectedKeys={["2"]}
-            className="InterSemiBoldFont"
-          >
-            {menuData.map((menuItem, index) => (
-              <>
-                <Item key={index}>
-                  <Link
-                    href={menuItem.path}
-                    onClick={() => setIsActive(true)}
-                    className={`${isActive ? "active" : ""}`}
-                  >
-                    <span className="nav-text">{menuItem.title}</span>
-                  </Link>
-                </Item>
-              </>
-            ))}
-            <Item className="contact-form" key="contact">
-              <Button type="primary" className="InterSemiBoldFont">
-                <Link
-                  target="_blanck"
-                  href="http://192.168.34.135:7001/exop-frontoffice/"
-                >
-                  Déposer une requête
-                </Link>
-              </Button>
-            </Item>
-          </Menu>
+            className="public-menu InterSemiBoldFont"
+            items={renderMenuItems(isActive, setIsActive)}
+          />
         </div>
       </div>
     </div>

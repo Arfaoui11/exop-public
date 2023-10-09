@@ -1,30 +1,33 @@
-
-
-  /************CSS top menu*****************/
-.ant-menu-horizontal{
+/************CSS top menu*****************/
+.ant-menu-horizontal {
   justify-content: space-between;
 }
 
 .ant-menu-submenu-popup .ant-menu-vertical {
-    box-shadow: none;
+  box-shadow: none;
 }
-.content-menu{
-  .links{
-  position: sticky;
-   top: 0;
-    z-index: 1; 
-   width: 100%;
-   height:80px;
+.content-menu {
+  .public-menu {
+    a:not(.btn-link a) {
+      color: black;
+    }
   }
-  .logo-header{
+  .links {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 80px;
+  }
+  .logo-header {
     float: left;
     width: 140;
     height: 100%;
     display: flex;
     align-items: center;
   }
-    .logo-header-img{
-    width:100%
+  .logo-header-img {
+    width: 100%;
   }
 }
 /*******************************/

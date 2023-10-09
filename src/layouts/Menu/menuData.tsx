@@ -1,29 +1,98 @@
-import { Menu } from "../../types/menu";
+import { Button, type MenuProps } from "antd";
+import Link from "next/link";
+import { Dispatch, SetStateAction } from "react";
 
-const menuData: Menu[] = [
+type MenuItem = Required<MenuProps>["items"][number];
+
+export const renderMenuItems = (
+  isActive: boolean,
+  setIsActive: Dispatch<SetStateAction<boolean>>
+): MenuItem[] => [
   {
-    title: "Connaitre EXOP",
-    path: "/About",
+    label: (
+      <Link
+        href="/about"
+        onClick={() => setIsActive(true)}
+        className={isActive ? "active" : ""}
+      >
+        <span className="nav-text">Connaitre EXOP</span>
+      </Link>
+    ),
+    type: "group",
   },
   {
-    title: "Réglementations",
-    path: "/Regulations",
+    label: (
+      <Link
+        href="/regulations"
+        onClick={() => setIsActive(true)}
+        className={isActive ? "active" : ""}
+      >
+        <span className="nav-text">Réglementations</span>
+      </Link>
+    ),
+    type: "group",
   },
   {
-    title: "Informations utiles",
-    path: "/Informations",
+    label: (
+      <Link
+        href="/informations"
+        onClick={() => setIsActive(true)}
+        className={isActive ? "active" : ""}
+      >
+        <span className="nav-text">Informations utiles</span>
+      </Link>
+    ),
+    type: "group",
   },
   {
-    title: "E-Services",
-    path: "/404",
+    label: (
+      <Link
+        href="/404"
+        onClick={() => setIsActive(true)}
+        className={isActive ? "active" : ""}
+      >
+        <span className="nav-text">E-Services</span>
+      </Link>
+    ),
+    type: "group",
   },
   {
-    title: "Réclamations",
-    path: "/Claims",
+    label: (
+      <Link
+        href="/claims"
+        onClick={() => setIsActive(true)}
+        className={isActive ? "active" : ""}
+      >
+        <span className="nav-text">Réclamations</span>
+      </Link>
+    ),
+    type: "group",
   },
   {
-    title: "Contact",
-    path: "/#contact-form",
+    label: (
+      <Link
+        href="/#contact-form"
+        onClick={() => setIsActive(true)}
+        className={isActive ? "active" : ""}
+      >
+        <span className="nav-text">Contact</span>
+      </Link>
+    ),
+    type: "group",
+  },
+  {
+    label: (
+      <div className="contact-form">
+        <Button type="primary" className="InterSemiBoldFont btn-link">
+          <Link
+            target="_blanck"
+            href="http://192.168.34.135:7001/exop-frontoffice/"
+          >
+            Déposer une requête
+          </Link>
+        </Button>
+      </div>
+    ),
+    type: "group",
   },
 ];
-export default menuData;
