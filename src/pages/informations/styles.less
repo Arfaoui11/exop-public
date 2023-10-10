@@ -1,0 +1,66 @@
+@import url("../../theme/variables.less");
+.ant-collapse {
+  .ant-collapse-item {
+    .ant-collapse-header {
+      background-color: @template-color;
+      color: #ffffff;
+      border-bottom: 2px solid white;
+    }
+  }
+}
+
+.collapse-1 {
+  background-color: aliceblue;
+  display: flex;
+}
+
+.page-section {
+  .ant-layout .ant-layout-sider {
+    line-height: auto;
+  }
+}
+.informations-title {
+  background-color: @template-color;
+  color: white;
+  padding: 15px;
+  border-bottom: 1px solid white;
+}
+.accordion-faq {
+  .ant-collapse {
+    .ant-collapse-item {
+      .ant-collapse-header {
+        background-color: white;
+        color: @template-color;
+      }
+    }
+  }
+}
+.accordion-faq3 .ant-collapse-ghost > .ant-collapse-item {
+  color: white;
+}
+.accordion-faq3 {
+  &.ant-collapse {
+    .ant-collapse-item {
+      .ant-collapse-header {
+        background-color: #eeeeee;
+        color: @template-color;
+      }
+    }
+  }
+}
+
+.accordion-inv,
+.accordion-faq1,
+.accordion-faq {
+  &.ant-collapse {
+    .ant-collapse-item {
+      .ant-collapse-header {
+        background-color: @template-color;
+        color: white;
+      }
+    }
+  }
+  p {
+    white-space: break-spaces;
+  }
+}

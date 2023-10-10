@@ -1,6 +1,7 @@
 import { createFromIconfontCN } from "@ant-design/icons";
-import { Col, Row } from "antd";
-import { AnimationOnScroll } from "react-animation-on-scroll";
+import { Grid } from "antd";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
 import {
   BreakoutIcon,
   MessageIcon,
@@ -10,6 +11,9 @@ import {
 const IconFont = createFromIconfontCN({
   scriptUrl: "//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js",
 });
+
+const { useBreakpoint } = Grid;
+
 const featuresData = [
   {
     icon: <BreakoutIcon />,
@@ -27,7 +31,7 @@ const featuresData = [
   },
   {
     icon: <MessageSmileIcon />,
-    title: "Transactions sécurisées",
+    title: "Transactions sécurisées ",
     paragraph:
       "Introduisez vos données sur EXOP en toute sécurité et confidentialité.",
     key: 3,
@@ -39,36 +43,96 @@ const featuresData = [
       "Restez en contact avec les services de la BCT pour tout renseignement.",
     key: 4,
   },
+  {
+    icon: <ZapIcon />,
+    title: "-- Support de proximité --",
+    paragraph:
+      "-- Restez en contact avec les services de la BCT pour tout renseignement. --",
+    key: 5,
+  },
 ];
+function SampleNextArrow(props: any) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "white" }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props: any) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "white" }}
+      onClick={onClick}
+    />
+  );
+}
 export default function Box() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+  const screens = useBreakpoint();
+  console.log(screens.sm);
+  console.log(screens);
+  const { xl } = useBreakpoint();
+  const [isMobile, setMobile] = useState(false);
+  useEffect(() => {
+    setMobile(() => !xl);
+  }, [xl]);
+
+  const screen = () => {
+    if (screens.sm) {
+    }
+  };
   return (
     <>
-      <Row gutter={[24, 48]}>
+      {" "}
+      <Slider {...settings}>
         {featuresData.map(({ key, title, icon, paragraph }) => (
-          <Col
-            xs={24}
-            sm={12}
-            md={12}
-            lg={6}
-            xl={6}
-            key={key}
-            className="ani-card"
-          >
-            <AnimationOnScroll
-              animateIn="animate__fadeInUp"
-              duration={1}
-              animateOnce={true}
-              className="ani"
-            >
-              <div className="card">
-                <div className="icon">{icon}</div>
-                <h3>{title}</h3>
-                <p>{paragraph}</p>
-              </div>
-            </AnimationOnScroll>
-          </Col>
+          <div className="card" key={key}>
+            <div className="icon">{icon}</div>
+            <h3>{title}</h3>
+            <p>{paragraph}</p>
+          </div>
         ))}
-      </Row>
+      </Slider>
     </>
   );
 }
