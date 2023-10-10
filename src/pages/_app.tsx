@@ -8,8 +8,8 @@ import "../components/Card/styles.less";
 import "../components/Contact/styles.less";
 import "../layouts/Footer/styles.less";
 import "../layouts/Header/styles.less";
-import "../pages/Informations/styles.less";
-import "./claims/styles.less";
+import "../pages/informations/styles.less";
+import "../styles/claims-styles.less";
 import "./global.less";
 export default function App({ Component, pageProps }: AppProps) {
   return (

@@ -3,7 +3,7 @@ import "animate.css/animate.min.css";
 import { Col, Divider, Row, Typography } from "antd";
 import Head from "next/head";
 import Image from "next/image";
-import imgAbout from "../../assets/images/about.png";
+import imgAbout from "../assets/images/about.png";
 const { Paragraph, Title } = Typography;
 export default function Home() {
   return (
