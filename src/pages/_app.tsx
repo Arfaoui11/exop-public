@@ -1,5 +1,7 @@
 import Layout from "@src/layouts/Layouts";
 import type { AppProps } from "next/app";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import "../components/Banner/BannerPage/styles.less";
 import "../components/Banner/styles.less";
 import "../components/Card/styles.less";
@@ -9,7 +11,6 @@ import "../layouts/Header/styles.less";
 import "../pages/Informations/styles.less";
 import "./claims/styles.less";
 import "./global.less";
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>

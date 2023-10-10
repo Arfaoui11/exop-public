@@ -1,7 +1,7 @@
 import { createFromIconfontCN } from "@ant-design/icons";
-import { Carousel, Col, Grid } from "antd";
+import { Grid } from "antd";
 import { useEffect, useState } from "react";
-import { AnimationOnScroll } from "react-animation-on-scroll";
+import Slider from "react-slick";
 import {
   BreakoutIcon,
   MessageIcon,
@@ -31,7 +31,7 @@ const featuresData = [
   },
   {
     icon: <MessageSmileIcon />,
-    title: "Transactions sécurisées",
+    title: "Transactions sécurisées ",
     paragraph:
       "Introduisez vos données sur EXOP en toute sécurité et confidentialité.",
     key: 3,
@@ -45,13 +45,69 @@ const featuresData = [
   },
   {
     icon: <ZapIcon />,
-    title: "title",
-    paragraph: "description.",
+    title: "-- Support de proximité --",
+    paragraph:
+      "-- Restez en contact avec les services de la BCT pour tout renseignement. --",
     key: 5,
   },
 ];
+function SampleNextArrow(props: any) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "white" }}
+      onClick={onClick}
+    />
+  );
+}
 
+function SamplePrevArrow(props: any) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "white" }}
+      onClick={onClick}
+    />
+  );
+}
 export default function Box() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   const screens = useBreakpoint();
   console.log(screens.sm);
   console.log(screens);
@@ -68,33 +124,15 @@ export default function Box() {
   return (
     <>
       {" "}
-      <Carousel
-        slidesToShow={
-          screens.lg ? 4 : screens.md ? 3 : screens.sm ? 2 : screens.xs ? 1 : 4
-        }
-        autoplay
-        dotPosition="bottom"
-        dots
-      >
+      <Slider {...settings}>
         {featuresData.map(({ key, title, icon, paragraph }) => (
-          <Col xs={24} key={key}>
-            <div className="ani-card">
-              <AnimationOnScroll
-                animateIn="animate__fadeInUp"
-                duration={1}
-                animateOnce={true}
-                className="ani"
-              >
-                <div className="card">
-                  <div className="icon">{icon}</div>
-                  <h3>{title}</h3>
-                  <p>{paragraph}</p>
-                </div>
-              </AnimationOnScroll>
-            </div>{" "}
-          </Col>
+          <div className="card" key={key}>
+            <div className="icon">{icon}</div>
+            <h3>{title}</h3>
+            <p>{paragraph}</p>
+          </div>
         ))}
-      </Carousel>
+      </Slider>
     </>
   );
 }
