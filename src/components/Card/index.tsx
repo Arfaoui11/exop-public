@@ -1,5 +1,6 @@
 import { createFromIconfontCN } from "@ant-design/icons";
-import { Col, Row } from "antd";
+import { Carousel, Col, Grid } from "antd";
+import { useEffect, useState } from "react";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import {
   BreakoutIcon,
@@ -10,6 +11,9 @@ import {
 const IconFont = createFromIconfontCN({
   scriptUrl: "//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js",
 });
+
+const { useBreakpoint } = Grid;
+
 const featuresData = [
   {
     icon: <BreakoutIcon />,
@@ -39,36 +43,58 @@ const featuresData = [
       "Restez en contact avec les services de la BCT pour tout renseignement.",
     key: 4,
   },
+  {
+    icon: <ZapIcon />,
+    title: "title",
+    paragraph: "description.",
+    key: 5,
+  },
 ];
+
 export default function Box() {
+  const screens = useBreakpoint();
+  console.log(screens.sm);
+  console.log(screens);
+  const { xl } = useBreakpoint();
+  const [isMobile, setMobile] = useState(false);
+  useEffect(() => {
+    setMobile(() => !xl);
+  }, [xl]);
+
+  const screen = () => {
+    if (screens.sm) {
+    }
+  };
   return (
     <>
-      <Row gutter={[24, 48]}>
+      {" "}
+      <Carousel
+        slidesToShow={
+          screens.lg ? 4 : screens.md ? 3 : screens.sm ? 2 : screens.xs ? 1 : 4
+        }
+        autoplay
+        dotPosition="bottom"
+        dots
+      >
         {featuresData.map(({ key, title, icon, paragraph }) => (
-          <Col
-            xs={24}
-            sm={12}
-            md={12}
-            lg={6}
-            xl={6}
-            key={key}
-            className="ani-card"
-          >
-            <AnimationOnScroll
-              animateIn="animate__fadeInUp"
-              duration={1}
-              animateOnce={true}
-              className="ani"
-            >
-              <div className="card">
-                <div className="icon">{icon}</div>
-                <h3>{title}</h3>
-                <p>{paragraph}</p>
-              </div>
-            </AnimationOnScroll>
+          <Col xs={24} key={key}>
+            <div className="ani-card">
+              <AnimationOnScroll
+                animateIn="animate__fadeInUp"
+                duration={1}
+                animateOnce={true}
+                className="ani"
+              >
+                <div className="card">
+                  <div className="icon">{icon}</div>
+                  <h3>{title}</h3>
+                  <p>{paragraph}</p>
+                </div>
+              </AnimationOnScroll>
+            </div>{" "}
           </Col>
         ))}
-      </Row>
+      </Carousel>
     </>
   );
 }
