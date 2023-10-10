@@ -1,7 +1,6 @@
 import { createFromIconfontCN } from "@ant-design/icons";
-import { Grid } from "antd";
+import { Carousel, Grid } from "antd";
 import { useEffect, useState } from "react";
-import Slider from "react-slick";
 import {
   BreakoutIcon,
   MessageIcon,
@@ -123,8 +122,7 @@ export default function Box() {
   };
   return (
     <>
-      {" "}
-      <Slider {...settings}>
+      <Carousel arrows {...settings}>
         {featuresData.map(({ key, title, icon, paragraph }) => (
           <div className="card" key={key}>
             <div className="icon">{icon}</div>
@@ -132,7 +130,7 @@ export default function Box() {
             <p>{paragraph}</p>
           </div>
         ))}
-      </Slider>
+      </Carousel>
     </>
   );
 }
