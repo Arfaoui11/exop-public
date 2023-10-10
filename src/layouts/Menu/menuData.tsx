@@ -47,7 +47,7 @@ export const renderMenuItems = (
   {
     label: (
       <Link
-        href="/404"
+        href="/services"
         onClick={() => setIsActive(true)}
         className={isActive ? "active" : ""}
       >

@@ -8,20 +8,6 @@ import Image from "next/image";
 import imgAbout from "../assets/images/regle.png";
 const { Paragraph, Title } = Typography;
 export default function Regulations() {
-  {
-    /*  const [articles, setArticles] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-      const data = await res.json();
-
-      setArticles(data);
-    };
-    getData();
-  }, []);
-   */
-  }
   return (
     <>
       <Head>
@@ -29,18 +15,6 @@ export default function Regulations() {
       </Head>
       <BannerPage title="Réglementations" />
       <div className="content-wrapper page-section">
-        {/*  {articles && (
-          <>
-            {articles.map((item: any) => {
-              return (
-                <>
-                  <div className="article">{item.id}</div>
-                </>
-              );
-            })}
-          </>
-          )}
-          */}
         <Row>
           <Col xs={24} md={18}>
             <Paragraph className="pb-3">
