@@ -5,7 +5,7 @@ import "animate.css/animate.min.css";
 import { Button, Col, Divider, Input, Row, Typography } from "antd";
 import Head from "next/head";
 import Image from "next/image";
-import imgAbout from "../../assets/images/regle.png";
+import imgAbout from "../assets/images/regle.png";
 const { Paragraph, Title } = Typography;
 export default function Regulations() {
   {
