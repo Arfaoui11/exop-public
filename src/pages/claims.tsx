@@ -2,26 +2,47 @@ import { UploadOutlined } from "@ant-design/icons";
 import { MessageSuccessIcon } from "@src/assets/icons";
 import BannerPage from "@src/components/Banner/BannerPage";
 import { ClaimType } from "@src/types/claim";
+import { getClaimRules } from "@src/utils/rules";
 import { ObjectKey, serverErrors } from "@src/utils/server-errors";
 import "animate.css/animate.min.css";
 import { Alert, Button, Form, Input, Modal, Upload } from "antd";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
 export default function Claims() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [error, setError] = useState<string>();
   const { Item } = Form;
   const router = useRouter();
+  const forbiddenExtensions = ['.exe', '.msi', '.bat', '.cmd', '.sh', '.zip', '.rar', '.7z', '.tar.gz', '.tgz', '.tar.bz2' ];
 
   async function submit(values: ClaimType) {
     setIsLoading(true);
     const formData = new FormData();
-    if (values.files)
+    let forbiddenFile= false;
+
+    if (values.files) {
+        values.files.fileList.forEach((file: any) => {
+        const fileExtension = file.name.slice(((file.name.lastIndexOf(".") - 1) >>> 0) + 2);
+          if (forbiddenExtensions.includes('.' + fileExtension)) {
+            forbiddenFile = true;
+          }
+      });
+    }
+
+    if (forbiddenFile) {
+        setError("Les documents zippés ou compressés ou à exécuter ne sont pas autorisés.");
+        setIsLoading(false);
+    }
+
+    else{
+      if (values.files)
       values.files.fileList.forEach((file) => {
         const blob = new Blob([file], { type: file.type });
         formData.append(`files`, blob, file.name);
       });
+
     delete values.files;
     formData.append("properties", JSON.stringify(values));
     try {
@@ -45,7 +66,9 @@ export default function Claims() {
       setError("Network Error");
       setIsLoading(false);
     }
+    }
   }
+
   const handleOk = () => {
     setIsLoading(false);
     setIsModalOpen(false);
@@ -56,6 +79,7 @@ export default function Claims() {
     setIsLoading(false);
     setIsModalOpen(false);
   };
+
   return (
     <>
       <BannerPage title="Réclamations" />
@@ -72,22 +96,19 @@ export default function Claims() {
           <Item
             label="E-mail"
             name="email"
-            rules={[
-              { required: true, message: "Champs obligatoire!" },
-              { type: "email", message: "E-mail non valide" },
-            ]}
+            rules={getClaimRules('email')}
           >
             <Input placeholder="E-mail" />
           </Item>
 
-          <Item label="Référence requête" name="reference">
+          <Item label="Référence requête" name="reference" rules={getClaimRules('requestReference')}>
             <Input placeholder="Référence requête" />
           </Item>
 
           <Item
             label="Objet"
             name="object"
-            rules={[{ required: true, message: "Champs obligatoire!" }]}
+            rules={getClaimRules('object')}
           >
             <Input placeholder="Objet" />
           </Item>
@@ -95,7 +116,7 @@ export default function Claims() {
           <Item
             label="Description"
             name="description"
-            rules={[{ required: true, message: "Champs obligatoire!" }]}
+            rules={getClaimRules('description')}
           >
             <Input.TextArea placeholder="Description" />
           </Item>
@@ -103,7 +124,6 @@ export default function Claims() {
           <Item name="files">
             <Upload
               multiple={false}
-              beforeUpload={() => false}
               className="upload-list-inline upload-claims"
             >
               <Button icon={<UploadOutlined />} type="text">
