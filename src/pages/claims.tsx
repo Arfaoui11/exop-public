@@ -37,17 +37,17 @@ export default function Claims() {
     }
 
     else{
-      if (values.files)
-      values.files.fileList.forEach((file) => {
-        const blob = new Blob([file], { type: file.type });
-        formData.append(`files`, blob, file.name);
+      if (values.files) {
+        values.files.fileList.forEach((file) => {
+        formData.append(`files`, file.originFileObj);
       });
+      }
 
     delete values.files;
     formData.append("properties", JSON.stringify(values));
     try {
       const response = await fetch(
-        process.env.NEXT_PUBLIC_BACKEND_API_URL + "/claims/public",
+        process.env.NEXT_PUBLIC_BACKEND_API_URL_V2 + "/claims/public",
         {
           method: "POST",
           body: formData,
@@ -125,6 +125,7 @@ export default function Claims() {
             <Upload
               multiple={false}
               className="upload-list-inline upload-claims"
+              beforeUpload={()=> false}
             >
               <Button icon={<UploadOutlined />} type="text">
                 Sélectionner une pièce jointe

@@ -1,3 +1,5 @@
+import { UploadFile } from "./uploadFile";
+
 export type ClaimType = {
   object: string;
   description: string;
@@ -5,6 +7,6 @@ export type ClaimType = {
   reference?: string;
   files?: {
     file: File;
-    fileList: File[];
+    fileList: UploadFile[];
   };
 }
