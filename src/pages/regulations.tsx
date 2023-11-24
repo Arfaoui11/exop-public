@@ -11,7 +11,7 @@ export default function Regulations() {
   return (
     <>
       <Head>
-        <title>EXPO | Réglementations</title>
+        <title>EXPO | Réglementationss</title>
       </Head>
       <BannerPage title="Réglementations" />
       <div className="content-wrapper page-section">
