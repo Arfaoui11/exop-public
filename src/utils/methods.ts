@@ -5,7 +5,7 @@ type FormObjectType = {
  [key: string]: string | null;
 }
 
- export const mapContentToFormObject =   ( element: PageContentType[]) => {
+export const mapContentToFormObject =   ( element: PageContentType[]) => {
   const newObject: FormObjectType = {};
   element.forEach( (element) => {
     newObject[element.name] = element.type === "IMAGE" ? element.mediaFileContent  : element.contentValue;

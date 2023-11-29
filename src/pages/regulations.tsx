@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 import {IFilterParams, IPublicDocument, PublicDocument, PublicPageType} from "@src/types/page";
 import {AxiosResponse} from "axios/index";
 import {getPageContentEndpoint, getPublicDocumentsEndpoint, viewDocumentEndpoint} from "@src/api";
-import {formatFileSize, mapContentToFormObject} from "@src/pages/methods";
+import {formatFileSize, mapContentToFormObject} from "@src/utils/methods";
 import {ListDataType} from "@src/utils/types";
 import {DownloadOutlined, EyeOutlined} from "@ant-design/icons";
 const { Paragraph, Title } = Typography;

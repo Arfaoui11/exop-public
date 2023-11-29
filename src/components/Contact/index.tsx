@@ -6,7 +6,7 @@ import {AxiosResponse} from "axios";
 import {getPageContentEndpoint} from "@src/api";
 import {sendEmailContact} from "@src/api/content-management";
 import {PublicPageType} from "@src/types/page";
-import {mapContentToFormObject} from "@src/pages/methods";
+import {mapContentToFormObject} from "@src/utils/methods";
 const { Paragraph, Title } = Typography;
 const { Option } = Select;
 const Contact: React.FC = () => {

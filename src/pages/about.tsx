@@ -6,7 +6,7 @@ import Image from "next/image";
 import {useEffect, useState} from "react";
 import {PublicPageType} from "@src/types/page";
 import {getPageContentEndpoint} from "@src/api";
-import {mapContentToFormObject} from "@src/pages/methods";
+import {mapContentToFormObject} from "@src/utils/methods";
 import {AxiosResponse} from "axios";
 const { Paragraph, Title } = Typography;
 export default function Home() {
