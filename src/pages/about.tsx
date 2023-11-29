@@ -54,8 +54,8 @@ export default function Home() {
                   </Paragraph>
                 </Col>
                 <Col xs={24} md={12} style={{textAlign: "right"}}>
-                  <Image className="image-wrapper" src={`data:image/jpeg;base64,${mappedData.imageKey}`}
-                         alt=""/>
+                  <Image  width={300} height={400}  src={`data:image/jpeg;base64,${mappedData.imageKey}`}
+                         alt="no image found"/>
                 </Col>
               </Row>
             </div>
