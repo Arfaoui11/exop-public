@@ -176,11 +176,9 @@ const Informations: React.FC<IMainLayoutProps> = () => {
       </Head>
       <BannerPage title="Informations Utiles" />
         <div className="content-wrapper page-section">
-
             {!!page && renderCollapseItem(page.sections)}
 
             {error && <Alert message={error} type="error"/>}
-
         </div>
     </>
   );
