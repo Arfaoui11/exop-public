@@ -57,27 +57,9 @@ const Informations: React.FC<IMainLayoutProps> = () => {
       return (
           <Collapse defaultActiveKey={["1"]} size="large" ghost accordion key={section.id}>
             <Panel header={section.title} key={section.id}>
-                {
-                    !!section.contentValue && section.type.includes("SECTION")  && (
-                        <Title level={5} className="pb-3">
-                        <Row justify="center" align="top">
-                          <Image
-                              style={{ width: "174px", height: "auto" }}
-                              src={`data:image/jpeg;base64,${section.mediaFileContent}` }
-                              alt=""
-                              className="pb-3"
-                          />
-                        </Row>
-                        <Row justify="center" align="top">
-                          {section.contentValue}
-                        </Row>
-                        </Title>
-                    )
-                }
               {renderContent(section)}
             </Panel>
           </Collapse>
-
       );
     })
   }
