@@ -51,8 +51,9 @@ export interface IPublicDocument  {
 export type PageContentType = {
     id: string;
     name: string;
+    icon:string;
     title:string;
-    type: "INPUT" | "TEXTAREA" | "IMAGE" | "LINK";
+    type: "INPUT" | "TEXTAREA" | "IMAGE" | "LINK" | "CARD";
     contentValue: string | null;
     mediaFileContent: string | null;
 };
