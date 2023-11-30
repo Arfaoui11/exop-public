@@ -3,11 +3,12 @@ import { MessageSuccessIcon } from "@src/assets/icons";
 import BannerPage from "@src/components/Banner/BannerPage";
 import { ClaimType } from "@src/types/claim";
 import { getClaimRules } from "@src/utils/rules";
-import { ObjectKey, serverErrors } from "@src/utils/server-errors";
 import "animate.css/animate.min.css";
 import { Alert, Button, Form, Input, Modal, Upload } from "antd";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import {AxiosResponse} from "axios";
+import {sendClaim} from "@src/api/content-management";
 
 export default function Claims() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -35,7 +36,6 @@ export default function Claims() {
         setError("Les documents zippés ou compressés ou à exécuter ne sont pas autorisés.");
         setIsLoading(false);
     }
-
     else{
       if (values.files) {
         values.files.fileList.forEach((file) => {
@@ -45,9 +45,9 @@ export default function Claims() {
 
     delete values.files;
     formData.append("properties", JSON.stringify(values));
-    try {
+   /* try {
       const response = await fetch(
-        process.env.NEXT_PUBLIC_BACKEND_API_URL_V2 + "/claims/public",
+        process.env.NEXT_PUBLIC_BACKEND_API_URL + "/claims/public",
         {
           method: "POST",
           body: formData,
@@ -65,7 +65,17 @@ export default function Claims() {
     } catch (error) {
       setError("Network Error");
       setIsLoading(false);
-    }
+    }*/
+
+      try {
+
+        const res : AxiosResponse<ClaimType> = await sendClaim(formData);
+        // Handle the data as needed (e.g., set it in state)
+        setIsModalOpen(true);
+      } catch (error) {
+        setError("Network Error");
+        setIsLoading(false);
+      }
     }
   }
 

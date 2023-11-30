@@ -1,15 +1,15 @@
 import Filter from "@src/components/Filter";
 import "animate.css/animate.min.css";
-import {Button, Col, Divider, Input, Pagination, PaginationProps, Row, Skeleton, Typography} from "antd";
+import {Alert, Button, Col, Divider, Pagination, PaginationProps, Row, Skeleton, Typography} from "antd";
 import Head from "next/head";
 import Image from "next/image";
 import {useEffect, useState} from "react";
 import {IFilterParams, IPublicDocument, PublicDocument, PublicPageType} from "@src/types/page";
-import {AxiosResponse} from "axios/index";
 import {getPageContentEndpoint, getPublicDocumentsEndpoint, viewDocumentEndpoint} from "@src/api";
 import {formatFileSize, mapContentToFormObject} from "@src/utils/methods";
 import {ListDataType} from "@src/utils/types";
 import {DownloadOutlined, EyeOutlined} from "@ant-design/icons";
+import {AxiosResponse} from "axios";
 const { Paragraph, Title } = Typography;
 export default function Regulations() {
   const [documents, setDocuments] = useState<ListDataType<IPublicDocument[]> | null>(null);
@@ -180,6 +180,8 @@ export default function Regulations() {
                                   showTotal={(total) => `Total ${total} items`} defaultPageSize={6}/>
                     </Col>
                   </Row>
+
+                  {error && <Alert message={error} type="error" />}
                 </div>
             ) :
             (

@@ -1,6 +1,6 @@
 import BannerPage from "@src/components/Banner/BannerPage";
 import "animate.css/animate.min.css";
-import { Col, List, Row, Skeleton, Typography} from "antd";
+import {Alert, Col, List, Row, Skeleton, Typography} from "antd";
 import Head from "next/head";
 import { PublicPageType} from "@src/types/page";
 import {useEffect, useState} from "react";
@@ -59,6 +59,7 @@ export default function Services() {
                       />
                     </Col>
                   </Row>
+                  {error && <Alert message={error} type="error" />}
                 </div>
             ) :
             (

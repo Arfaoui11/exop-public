@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 
 
-import { axiosPublicInstance } from "./instance";
+import {axiosApiInstance, axiosPublicInstance} from "./instance";
 import { generateRequestQuery } from "./methods";
 import {
     ContentManagementPagesKeys,
@@ -10,7 +10,8 @@ import {
     PublicPageType,
     sendEmailType
 } from "@src/types/page";
-import {ListDataType} from "@src/utils/types";
+import {ListDataType, UtilInformationType} from "@src/utils/types";
+import {ClaimType} from "@src/types/claim";
 
 const PREFIX = "/publicPages";
 const DOC_PREFIX = "/publicDocuments";
@@ -19,6 +20,9 @@ export const getPageContentEndpoint = (
   name: ContentManagementPagesKeys
 ): Promise<AxiosResponse<PublicPageType>> =>
   axiosPublicInstance.get(`${PREFIX}/title?pageTitle=${name}`);
+
+export const getPageContentInfoEndpoint = (): Promise<AxiosResponse<UtilInformationType>> =>
+    axiosPublicInstance.get(`${PREFIX}/info`);
 
 export const getPublicDocumentsEndpoint = (
   params: IListPublicDocsParams
@@ -40,3 +44,7 @@ export const viewDocumentEndpoint = (
 
 export const sendEmailContact = (data: sendEmailType): Promise<AxiosResponse<string>> =>
     axiosPublicInstance.post(`${PREFIX}/contact/send`, data);
+
+
+export const sendClaim = (data: FormData): Promise<AxiosResponse<ClaimType>> =>
+    axiosApiInstance.post(`/claims/public`, data);

@@ -1,6 +1,6 @@
 import BannerPage from "@src/components/Banner/BannerPage";
 import "animate.css/animate.min.css";
-import {Col, Divider, Row, Skeleton, Typography} from "antd";
+import {Alert, Col, Divider, Row, Skeleton, Typography} from "antd";
 import Head from "next/head";
 import Image from "next/image";
 import {useEffect, useState} from "react";
@@ -59,6 +59,7 @@ export default function Home() {
                 </Col>
               </Row>
             </div>
+            {error && <Alert message={error} type="error" />}
           </div>
       ) : (
           <div className="content-wrapper page-section">

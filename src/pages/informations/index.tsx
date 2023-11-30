@@ -1,71 +1,187 @@
 import BannerPage from "@src/components/Banner/BannerPage";
 import "animate.css/animate.min.css";
-import { Collapse, Grid, TabsProps, Typography } from "antd";
+import {Button, Col, Collapse, Grid, Row, Image, Typography, Alert} from "antd";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import Documents from "./Documents";
-import Faq from "./Faq";
-import Guide from "./Guide";
+import {getPageContentInfoEndpoint} from "@src/api";
+import {IChildType, UtilInformationType} from "@src/utils/types";
+import { FilePdfOutlined} from "@ant-design/icons";
+import {AxiosResponse} from "axios";
 
 const { Paragraph, Title } = Typography;
 interface IMainLayoutProps {}
 const { useBreakpoint } = Grid;
 const { Panel } = Collapse;
-const tabsData: TabsProps["items"] = [
-  {
-    label: "FAQ",
-    children: <Faq />,
-    key: "faq",
-  },
-  {
-    label: "Documents requis ",
-    children: <Documents />,
-    key: "faq-doc",
-  },
-  {
-    label: "Guide d'utilisateurs",
-    children: <Guide />,
-    key: "faq-guide",
-  },
-  {
-    label: "Opération courante",
-    children: <Guide />,
-    key: "faq-ope",
-  },
-];
-const Informations: React.FC<IMainLayoutProps> = () => {
-  const [isMobile, setMobile] = useState(false);
-  const { lg } = useBreakpoint();
 
+const Informations: React.FC<IMainLayoutProps> = () => {
+
+  const [page, setPage] = useState<UtilInformationType | null>(null);
+  const [error, setError] = useState<string>();
   useEffect(() => {
-    setMobile(() => !lg);
-  }, [lg]);
+    getPage();
+  }, []);
+  const getPage = async () => {
+
+    try {
+
+      const res : AxiosResponse<UtilInformationType> = await getPageContentInfoEndpoint();
+      // Handle the data as needed (e.g., set it in state)
+      setPage(res.data);
+    } catch (error) {
+      // Handle the error as needed
+      setError("Network Error");
+    }
+  };
+
+  const viewPdf = (pdf: any) => {
+      // Convert base64 to binary
+      const binaryData = Uint8Array.from(atob(pdf), char => char.charCodeAt(0));
+
+      // Create a Blob from the Uint8Array
+      const blob = new Blob([binaryData], {type: 'application/pdf'});
+
+      // Create a Blob URL using window.URL.createObjectURL
+      const blobUrl = window.URL.createObjectURL(blob);
+      // Open PDF in a new window
+      const newWindow = window.open(blobUrl, '_blank');
+
+      // Optionally, set the window title
+      if (newWindow) {
+          newWindow.document.title = 'PDF Viewer';
+      }
+  };
+
+  const renderCollapseItem = (sections?: IChildType[]) => {
+    if (!sections) return null;
+    return sections.map((section) => {
+      return (
+          <Collapse defaultActiveKey={["1"]} size="large" ghost accordion key={section.id}>
+            <Panel header={section.title} key={section.id}>
+                {
+                    !!section.contentValue && section.type.includes("SECTION")  && (
+                        <Title level={5} className="pb-3">
+                        <Row justify="center" align="top">
+                          <Image
+                              style={{ width: "174px", height: "auto" }}
+                              src={`data:image/jpeg;base64,${section.mediaFileContent}` }
+                              alt=""
+                              className="pb-3"
+                          />
+                        </Row>
+                        <Row justify="center" align="top">
+                          {section.contentValue}
+                        </Row>
+                        </Title>
+                    )
+                }
+              {renderContent(section)}
+            </Panel>
+          </Collapse>
+
+      );
+    })
+  }
+
+  const renderContent = (data: IChildType) => {
+
+    switch (data.type) {
+      case "LINK":
+        return (
+            <Col span={24}>
+                <a href={data.contentValue} target="_blank" rel="noreferrer">
+                    <Button type="link">{data.title}</Button>
+                </a>
+            </Col>
+        );
+
+      case "SECTION": return (
+          <Collapse
+              defaultActiveKey={["1"]}
+              ghost
+              size="large"
+              accordion
+              className="accordion-faq3"
+          >
+              <Panel header={data.title} key={data.id}>
+                {renderCollapseItem(data.domains)}
+              </Panel>
+          </Collapse>
+      );
+
+      case "DOMAIN":return (
+          <Collapse accordion className="accordion-inv">
+              <Panel header={data.title} key={data.id}>
+                  {renderCollapseItem(data.questions)}
+              </Panel>
+          </Collapse>
+      );
+
+      case "VIDEO":
+        return (
+          <>
+              <div className="page-section">
+                  <Row>
+                      <div>
+                          <h2>{data.title}</h2>
+                          <iframe
+                              width="560"
+                              height="315"
+                              src={data.contentValue}
+                              title="YouTube video player"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              allowFullScreen
+                          ></iframe>
+                      </div>
+                  </Row>
+              </div>
+          </>
+        );
+      case "DOC" : return (
+          <div className="page-section">
+              <Row>
+                  <Col md={24}>
+                      <Title level={4}>{data.title}</Title>
+                  </Col>
+                  <Col xs={32} md={32} lg={12} className="btn-pdf">
+                      <a  target="_blank" rel="">
+                          {
+                              data.mediaFileContent && (
+                                  <Button type="primary" ghost onClick={() => viewPdf(data.mediaFileContent)} icon={<FilePdfOutlined />}>
+                                      {data.title}
+                                  </Button>
+                              )
+                          }
+
+                      </a>
+                  </Col>
+              </Row>
+          </div>
+      );
+      case "QUESTION": {
+        return data.answer && (
+            <Col span={24}>
+              {data.answer.title}
+            </Col>
+        )
+      }
+      default:
+        return null;
+    }
+  }
+
   return (
     <>
       <Head>
         <title>EXPO | Informations Utiles</title>
       </Head>
       <BannerPage title="Informations Utiles" />
-      <div className="content-wrapper page-section">
-        <Collapse defaultActiveKey={["1"]} size="large" ghost accordion>
-          {tabsData.map((invItems, index) => (
-            <>
-              <Panel header={invItems.label} key={invItems.key}>
-                <p>{invItems.children}</p>
-              </Panel>
-            </>
-          ))}
-        </Collapse>
+        <div className="content-wrapper page-section">
 
-        {/*  <Tabs
-          //tabPosition={`${isMobile ? "top" : "left"}`}
-          defaultActiveKey="1"
-          type="card"
-          centered
-          items={tabsData}
-        />
-          */}
-      </div>
+            {!!page && renderCollapseItem(page.sections)}
+
+            {error && <Alert message={error} type="error"/>}
+
+        </div>
     </>
   );
 };

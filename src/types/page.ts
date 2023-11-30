@@ -64,21 +64,10 @@ export interface IFilterParams extends ISearchSortPaginateComposedType<PublicDoc
     creationYear?: string;
 }
 
-export type RegulationResponseData = {
-    content: PublicDocument[];
-    page: number;
-    totalPage: number;
-    pageSize: number;
-    totalElement: number;
-}
-
-
-
-export type PageResponseData = {
-    id: number;
-    title: string;
-    pageContents: PageContentType[];
-}
+export type SelectOptionType = {
+    label?: string;
+    value?: string | number | boolean;
+};
 
 export type sendEmailType = {
     firstName: number;
