@@ -102,17 +102,13 @@ const Informations: React.FC<IMainLayoutProps> = () => {
               accordion
               className="accordion-faq3"
           >
-              <Panel header={data.title} key={data.id}>
                 {renderCollapseItem(data.domains)}
-              </Panel>
           </Collapse>
       );
 
       case "DOMAIN":return (
           <Collapse accordion className="accordion-inv">
-              <Panel header={data.title} key={data.id}>
                   {renderCollapseItem(data.questions)}
-              </Panel>
           </Collapse>
       );
 
