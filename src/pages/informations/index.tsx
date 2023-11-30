@@ -1,6 +1,6 @@
 import BannerPage from "@src/components/Banner/BannerPage";
 import "animate.css/animate.min.css";
-import {Button, Col, Collapse, Grid, Row, Image, Typography, Alert} from "antd";
+import {Button, Col, Collapse, Grid, Row, Image, Typography, Alert, Skeleton} from "antd";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import {getPageContentInfoEndpoint} from "@src/api";
@@ -57,6 +57,23 @@ const Informations: React.FC<IMainLayoutProps> = () => {
       return (
           <Collapse defaultActiveKey={["1"]} size="large" ghost accordion key={section.id}>
             <Panel header={section.title} key={section.id}>
+                {
+                    !!section.contentValue && section.type.includes("SECTION")  && (
+                        <Title level={5} className="pb-3">
+                            <Row justify="center" align="top">
+                                <Image
+                                    style={{ width: "174px", height: "auto" }}
+                                    src={`data:image/jpeg;base64,${section.mediaFileContent}` }
+                                    alt=""
+                                    className="pb-3"
+                                />
+                            </Row>
+                            <Row justify="center" align="top">
+                                {section.contentValue}
+                            </Row>
+                        </Title>
+                    )
+                }
               {renderContent(section)}
             </Panel>
           </Collapse>
@@ -125,7 +142,7 @@ const Informations: React.FC<IMainLayoutProps> = () => {
                           {
                               data.mediaFileContent && (
                                   <Button type="primary" ghost onClick={() => viewPdf(data.mediaFileContent)} icon={<FilePdfOutlined />}>
-                                      {data.title}
+                                      {data.contentValue}
                                   </Button>
                               )
                           }
@@ -153,11 +170,21 @@ const Informations: React.FC<IMainLayoutProps> = () => {
         <title>EXPO | Informations Utiles</title>
       </Head>
       <BannerPage title="Informations Utiles" />
-        <div className="content-wrapper page-section">
-            {!!page && renderCollapseItem(page.sections)}
+        {
+            page?.sections ?
+                (
+                    <div className="content-wrapper page-section">
+                        {!!page && renderCollapseItem(page.sections)}
 
-            {error && <Alert message={error} type="error"/>}
-        </div>
+                        {error && <Alert message={error} type="error"/>}
+                    </div>
+                ):
+                (
+                <div className="content-wrapper page-section">
+                    <Skeleton active/>
+                </div>
+                )
+        }
     </>
   );
 };
