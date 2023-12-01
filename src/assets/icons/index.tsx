@@ -3,6 +3,7 @@ import Breakout from "./chart-breakout-square.svg";
 import Message from "./message-chat-circle.svg";
 import MessageSmile from "./message-smile-circle.svg";
 import MessageSuccess from "./success-icon.svg";
+import Zap from "./zap.svg";
 import Top from "./top.svg";
 type IconType = {
   size?: number;
@@ -18,7 +19,7 @@ const MessageSmileIcon: React.FC<IconType> = ({ size }) => (
   <SvgImage size={size} src={MessageSmile} alt="Arrow icon" />
 );
 const ZapIcon: React.FC<IconType> = ({ size }) => (
-  <SvgImage size={size} src={Top} alt="Bookmark icon" />
+  <SvgImage size={size} src={Zap} alt="Zap icon" />
 );
 const TopIcon: React.FC<IconType> = ({ size }) => (
   <SvgImage size={size} src={Top} alt="Top icon" />

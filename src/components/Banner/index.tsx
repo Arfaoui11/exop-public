@@ -1,11 +1,40 @@
-import { Button, Col, Row, Typography } from "antd";
+import {Button, Col, Row, Skeleton, Typography} from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import { TopIcon } from "../../assets/icons";
 import Background from "../../assets/images/banner.gif";
-const { Paragraph, Title } = Typography;
+import {useEffect, useState} from "react";
+import {PublicPageType} from "@src/types/page";
+import {AxiosResponse} from "axios";
+import {getPageContentEndpoint} from "@src/api";
+import {mapContentToFormObject} from "@src/utils/methods";
 export default function Banner() {
+
+  const [page, setPage] = useState<PublicPageType | null>(null);
+
+  const [error, setError] = useState<string>();
+  useEffect(() => {
+    getPage();
+  }, []);
+
+
+  const getPage = async () => {
+
+    try {
+
+      const res : AxiosResponse<PublicPageType> = await getPageContentEndpoint("HOME_PAGE");
+      // Handle the data as needed (e.g., set it in state)
+      setPage(res.data);
+    } catch (error) {
+      setError("Network Error");
+      // Handle the error as needed
+    }
+  };
+
+  const mappedData = page ? mapContentToFormObject(page?.pageContents) : {};
+
+
   return (
     <>
       <div className="slide">
@@ -24,7 +53,7 @@ export default function Banner() {
                       duration={1}
                       animateOnce={true}
                     >
-                      Découvrez EXOP
+                      {mappedData.header}
                     </AnimationOnScroll>
                   </div>
                   <div className="textslide">
@@ -33,11 +62,7 @@ export default function Banner() {
                       duration={2}
                       animateOnce={true}
                     >
-                      Une plateforme digitale de la Banque Centrale de Tunisie
-                      dédiée au dépôt des requêtes qui concernent les opérations
-                      en capital, les opérations de commerce extérieur et les
-                      opérations courantes. Elle est destinée aux intermédiaires
-                      agrées, opérateurs économiques et citoyens
+                      {mappedData.body}
                     </AnimationOnScroll>
                   </div>
 

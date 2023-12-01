@@ -1,78 +1,93 @@
-import { createFromIconfontCN } from "@ant-design/icons";
 import { Carousel, Grid } from "antd";
 import { useEffect, useState } from "react";
 import {
   BreakoutIcon,
   MessageIcon,
-  MessageSmileIcon,
+  MessageSmileIcon, TopIcon,
   ZapIcon,
 } from "../../assets/icons";
-const IconFont = createFromIconfontCN({
-  scriptUrl: "//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js",
-});
+import { PublicPageType, PageContentType } from "@src/types/page";
+import { AxiosResponse } from "axios";
+import { getPageContentEndpoint } from "@src/api";
 
 const { useBreakpoint } = Grid;
 
-const featuresData = [
-  {
-    icon: <BreakoutIcon />,
-    title: "Parcours Digitalisé",
-    paragraph:
-      "Déposez, là où vous êtes, votre requête de change auprès de la Banque Centrale de Tunisie par un simple clic.",
-    key: 1,
-  },
-  {
-    icon: <MessageIcon />,
-    title: "Suivi centralisé",
-    paragraph:
-      "Suivez sur EXOP l'avancement du traitement de votre requête en temps réel jusqu'à la délivrance de la décision de la BCT.",
-    key: 2,
-  },
-  {
-    icon: <MessageSmileIcon />,
-    title: "Transactions sécurisées ",
-    paragraph:
-      "Introduisez vos données sur EXOP en toute sécurité et confidentialité.",
-    key: 3,
-  },
-  {
-    icon: <ZapIcon />,
-    title: "Support de proximité",
-    paragraph:
-      "Restez en contact avec les services de la BCT pour tout renseignement.",
-    key: 4,
-  },
-  {
-    icon: <ZapIcon />,
-    title: "-- Support de proximité --",
-    paragraph:
-      "-- Restez en contact avec les services de la BCT pour tout renseignement. --",
-    key: 5,
-  },
-];
-function SampleNextArrow(props: any) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "white" }}
-      onClick={onClick}
-    />
-  );
-}
 
-function SamplePrevArrow(props: any) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "white" }}
-      onClick={onClick}
-    />
-  );
-}
-export default function Box() {
-  var settings = {
+const Box = () => {
+  const [cardsData, setCardsData] = useState<PublicPageType | null>(null);
+  const [isMobile, setMobile] = useState(false);
+  const [error, setError] = useState<string>('');
+  const screens = useBreakpoint();
+  const { xl } = useBreakpoint();
+
+
+  useEffect(() => {
+    setMobile(() => !xl);
+  }, [xl]);
+
+  useEffect(() => {
+    const getPage = async () => {
+      try {
+        const res: AxiosResponse<PublicPageType> = await getPageContentEndpoint("HOME_PAGE");
+        setCardsData(res.data);
+        setError('');
+      } catch (error) {
+        setError("Network Error");
+      }
+    };
+
+    getPage();
+  }, []);
+
+  const filteredCardsData: PageContentType[] = cardsData?.pageContents?.filter(
+      (content) => content.type === 'CARD'
+  ) || [];
+
+  // Assuming iconOptions is defined somewhere in your code
+  const iconOptions = [
+    { icon: <BreakoutIcon />, value: '<BreakoutIcon />' },
+    { icon: <MessageIcon />, value: '<MessageIcon />' },
+    { icon: <MessageSmileIcon />, value: '<MessageSmileIcon />' },
+    { icon: <ZapIcon />, value: '<ZapIcon />' },
+    { icon: <TopIcon />, value: '<TopIcon />' },
+  ];
+
+  // Define a function to get the icon component based on the icon name
+  const getIconComponent = (iconName:string) => {
+    const foundIcon = iconOptions.find(({ value }) => value === iconName);
+    return foundIcon ? foundIcon.icon : null;
+  }
+
+  const featuresData = filteredCardsData.map((card) => ({
+    key: card.id,
+    icon: getIconComponent(card.icon), // Use contentValue as the icon type or provide a default value
+    title: card.title,
+    paragraph: card.contentValue || "", // Use contentValue as the paragraph content or provide a default value
+  }));
+
+  function SampleNextArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style, display: "block", background: "white" }}
+            onClick={onClick}
+        />
+    );
+  }
+
+  function SamplePrevArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style, display: "block", background: "white" }}
+            onClick={onClick}
+        />
+    );
+  }
+
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -107,30 +122,20 @@ export default function Box() {
       },
     ],
   };
-  const screens = useBreakpoint();
-  console.log(screens.sm);
-  console.log(screens);
-  const { xl } = useBreakpoint();
-  const [isMobile, setMobile] = useState(false);
-  useEffect(() => {
-    setMobile(() => !xl);
-  }, [xl]);
 
-  const screen = () => {
-    if (screens.sm) {
-    }
-  };
   return (
-    <>
-      <Carousel arrows {...settings}>
-        {featuresData.map(({ key, title, icon, paragraph }) => (
-          <div className="card" key={key}>
-            <div className="icon">{icon}</div>
-            <h3>{title}</h3>
-            <p>{paragraph}</p>
-          </div>
-        ))}
-      </Carousel>
-    </>
+      <>
+        <Carousel arrows {...settings}>
+          {featuresData.map(({ key, title, icon, paragraph }) => (
+              <div className="card" key={key}>
+                <div className="icon">{icon}</div>
+                <h3>{title}</h3>
+                <p>{paragraph}</p>
+              </div>
+          ))}
+        </Carousel>
+      </>
   );
-}
+};
+
+export default Box;
