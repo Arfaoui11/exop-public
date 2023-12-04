@@ -2,7 +2,7 @@ import Banner from "@src/components/Banner";
 import Box from "@src/components/Card";
 import Contact from "@src/components/Contact";
 import "animate.css";
-import {Button, Col, Row, Skeleton, Typography} from "antd";
+import {Alert, Button, Col, Row, Skeleton, Typography} from "antd";
 import Link from "next/link";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import {useEffect, useState} from "react";
@@ -10,7 +10,6 @@ import {PublicPageType} from "@src/types/page";
 import {AxiosResponse} from "axios";
 import {getPageContentEndpoint} from "@src/api";
 import {mapContentToFormObject} from "@src/utils/methods";
-const { Paragraph, Title } = Typography;
 
 export default function Home() {
 
@@ -110,6 +109,7 @@ export default function Home() {
                   </AnimationOnScroll>
                 </div>
               </div>
+              {error && <Alert message={error} type="error" />}
             </>
         )
         <section id="contact-form">

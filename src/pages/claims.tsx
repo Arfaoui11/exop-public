@@ -71,7 +71,10 @@ export default function Claims() {
 
         const res : AxiosResponse<ClaimType> = await sendClaim(formData);
         // Handle the data as needed (e.g., set it in state)
-        setIsModalOpen(true);
+        if (res.data)
+        {
+          setIsModalOpen(true);
+        }
       } catch (error) {
         setError("Network Error");
         setIsLoading(false);

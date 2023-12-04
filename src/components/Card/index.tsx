@@ -1,14 +1,11 @@
 import { Carousel, Grid } from "antd";
-import { useEffect, useState } from "react";
-import {
-  BreakoutIcon,
-  MessageIcon,
-  MessageSmileIcon, TopIcon,
-  ZapIcon,
-} from "../../assets/icons";
+import React, { useEffect, useState } from "react";
+
 import { PublicPageType, PageContentType } from "@src/types/page";
 import { AxiosResponse } from "axios";
 import { getPageContentEndpoint } from "@src/api";
+import {BreakoutIcon, MessageIcon, MessageSmileIcon, TopIcon, ZapIcon} from "@src/assets/icons";
+import Image from "next/image";
 
 const { useBreakpoint } = Grid;
 
@@ -60,7 +57,7 @@ const Box = () => {
 
   const featuresData = filteredCardsData.map((card) => ({
     key: card.id,
-    icon: getIconComponent(card.icon), // Use contentValue as the icon type or provide a default value
+    icon: card.mediaFileContent, // Use contentValue as the icon type or provide a default value
     title: card.title,
     paragraph: card.contentValue || "", // Use contentValue as the paragraph content or provide a default value
   }));
@@ -128,7 +125,10 @@ const Box = () => {
         <Carousel arrows {...settings}>
           {featuresData.map(({ key, title, icon, paragraph }) => (
               <div className="card" key={key}>
-                <div className="icon">{icon}</div>
+                <div className="icon">
+                  <Image  width={30} height={30}  src={`data:image/svg+xml;base64,${icon}`}
+                          alt="no image found"/>
+                </div>
                 <h3>{title}</h3>
                 <p>{paragraph}</p>
               </div>

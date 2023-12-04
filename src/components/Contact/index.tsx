@@ -115,7 +115,7 @@ const Contact: React.FC = () => {
                       label="Email"
                       name="email1"
                       rules={[
-                        { required: true, message: "Veuillez saisir votre Email" },
+                        { required: true,type:"email", message: "Veuillez saisir votre Email" },
                       ]}
                   >
                     <Input placeholder="Email" />
@@ -124,7 +124,7 @@ const Contact: React.FC = () => {
                       label="Email"
                       name="email2"
                       rules={[
-                        { required: true, message: "Veuillez saisir votre Email" },
+                        { required: true,type:"email", message: "Veuillez saisir votre Email" },
                       ]}
                   >
                     <Input placeholder="Email" />
