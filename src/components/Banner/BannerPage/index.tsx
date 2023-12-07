@@ -1,7 +1,6 @@
 import Breadcrumb from '@src/components/Common/Breadcrumb';
 import SectionTitle from '@src/components/Common/SectionTitle';
-import { Row, Typography } from 'antd';
-const { Paragraph,Title } = Typography;
+import { Row } from 'antd';
 
 
 const BannerPage = ({

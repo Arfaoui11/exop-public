@@ -6,12 +6,12 @@ import { PublicPageType} from "@src/types/page";
 import {useEffect, useState} from "react";
 import {getPageContentEndpoint} from "@src/api";
 import {AxiosResponse} from "axios";
-const { Paragraph, Title } = Typography;
+const {  Title } = Typography;
 export default function Services() {
   const [page, setPage] = useState<PublicPageType | null>(null);
   const [error, setError] = useState<string>();
   useEffect(() => {
-    getPage();
+    getPage().then();
   }, []);
   const getPage = async () => {
 

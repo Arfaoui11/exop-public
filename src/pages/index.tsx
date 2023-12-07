@@ -2,7 +2,7 @@ import Banner from "@src/components/Banner";
 import Box from "@src/components/Card";
 import Contact from "@src/components/Contact";
 import "animate.css";
-import {Button, Col, Row, Skeleton, Typography} from "antd";
+import {Alert, Button, Col, Row, Skeleton} from "antd";
 import Link from "next/link";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import {useEffect, useState} from "react";
@@ -10,14 +10,13 @@ import {PublicPageType} from "@src/types/page";
 import {AxiosResponse} from "axios";
 import {getPageContentEndpoint} from "@src/api";
 import {mapContentToFormObject} from "@src/utils/methods";
-const { Paragraph, Title } = Typography;
 
 export default function Home() {
 
   const [page, setPage] = useState<PublicPageType | null>(null);
   const [error, setError] = useState<string>();
   useEffect(() => {
-    getPage();
+    getPage().then();
   }, []);
   const getPage = async () => {
 
@@ -41,9 +40,7 @@ export default function Home() {
       <>
         {page?.pageContents ? (
       <>
-        <Banner />
-
-
+        <Banner content={mappedData}/>
             <>
               <div className="features content_padding">
                 <div className="layout_padding">
@@ -97,19 +94,24 @@ export default function Home() {
                     </Row>
                     <Row justify="center" align="middle">
                       <Col>
-                        <Button type="primary" className="InterSemiBoldFont">
-                          <Link
-                              target="_blanck"
-                              href="http://192.168.34.135:7001/exop-frontoffice/"
-                          >
-                            Déposer une requête
-                          </Link>
-                        </Button>
+                        {
+                            mappedData.button_link && (
+                                <Button type="primary" className="InterSemiBoldFont">
+                                  <Link
+                                      target="_blanck"
+                                      href={mappedData.button_link}
+                                  >
+                                    {mappedData.button_title}
+                                  </Link>
+                                </Button>
+                            )
+                        }
                       </Col>
                     </Row>
                   </AnimationOnScroll>
                 </div>
               </div>
+              {error && <Alert message={error} type="error" />}
             </>
         )
         <section id="contact-form">

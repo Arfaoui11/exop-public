@@ -10,7 +10,7 @@ import {formatFileSize, mapContentToFormObject} from "@src/utils/methods";
 import {ListDataType} from "@src/utils/types";
 import {DownloadOutlined, EyeOutlined} from "@ant-design/icons";
 import {AxiosResponse} from "axios";
-const { Paragraph, Title } = Typography;
+const { Paragraph } = Typography;
 export default function Regulations() {
   const [documents, setDocuments] = useState<ListDataType<IPublicDocument[]> | null>(null);
   const [page, setPage] = useState<PublicPageType | null>(null);
@@ -21,8 +21,8 @@ export default function Regulations() {
       isActive: true,
       page: 1,
       pageSize: 6
-    });
-    getPage();
+    }).then();
+    getPage().then();
   }, []);
 
 
@@ -55,7 +55,7 @@ export default function Regulations() {
   const handleFilterSubmit = (params: IFilterParams) => {
     // * filter documents by criteria
     params.page = current;
-    getDocuments(params);
+    getDocuments(params).then();
   }
 
   const onChange: PaginationProps['onChange'] = (page) => {
@@ -64,7 +64,7 @@ export default function Regulations() {
       page: page,
       pageSize: 6,
       isActive: true
-    });
+    }).then();
   };
 
   const download = async (id: string) => {
