@@ -1,14 +1,14 @@
-import {Button, Col, Row, Skeleton, Typography} from "antd";
+import {Button, Col, Row} from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimationOnScroll } from "react-animation-on-scroll";
-import { TopIcon } from "../../assets/icons";
 import Background from "../../assets/images/banner.gif";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {PublicPageType} from "@src/types/page";
 import {AxiosResponse} from "axios";
 import {getPageContentEndpoint} from "@src/api";
 import {mapContentToFormObject} from "@src/utils/methods";
+import {TopIcon} from "@src/assets/icons";
 export default function Banner() {
 
   const [page, setPage] = useState<PublicPageType | null>(null);

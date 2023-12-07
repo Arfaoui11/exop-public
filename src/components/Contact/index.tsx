@@ -1,12 +1,11 @@
-import {Alert, Button, Col, Form, Input, Row, Select, Typography} from "antd";
+import {Alert, Button, Col, Form, Input, Row, Select} from "antd";
 import React, {useEffect, useState} from "react";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import Video from "../Media/Video";
 import {AxiosResponse} from "axios";
 import {getPageContentEndpoint, sendEmailContact} from "@src/api";
-import {PublicPageType} from "@src/types/page";
+import {PublicPageType, sendEmailType} from "@src/types/page";
 import {mapContentToFormObject} from "@src/utils/methods";
-const { Paragraph, Title } = Typography;
 const { Option } = Select;
 const Contact: React.FC = () => {
 
@@ -14,7 +13,7 @@ const Contact: React.FC = () => {
     const [error, setError] = useState<string>();
     const [successMessage, setSuccessMessage] = useState<string | null>();
     useEffect(() => {
-        getPage();
+        getPage().then();
     }, []);
     const getPage = async () => {
 
@@ -30,7 +29,7 @@ const Contact: React.FC = () => {
 
     const mappedData = page ? mapContentToFormObject(page?.pageContents) : {};
 
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: sendEmailType) => {
 
       try {
           const res : AxiosResponse<String> = await sendEmailContact(values);
@@ -124,7 +123,7 @@ const Contact: React.FC = () => {
                       label="Email"
                       name="email2"
                       rules={[
-                        { required: true,type:"email", message: "Veuillez saisir votre Email" },
+                        { required: true,type:"email", message: "Veuillez saisir votre seconde Email" },
                       ]}
                   >
                     <Input placeholder="Email" />

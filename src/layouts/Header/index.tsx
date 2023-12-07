@@ -1,11 +1,9 @@
-import { Layout, Menu } from "antd";
+import { Menu } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import logo from "../../assets/exop.svg";
 import { renderMenuItems } from "../Menu/menuData";
-const { Content, Sider, Footer } = Layout;
-const { Item } = Menu;
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
