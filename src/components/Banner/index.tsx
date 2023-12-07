@@ -3,37 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import Background from "../../assets/images/banner.gif";
-import React, {useEffect, useState} from "react";
-import {PublicPageType} from "@src/types/page";
-import {AxiosResponse} from "axios";
-import {getPageContentEndpoint} from "@src/api";
-import {mapContentToFormObject} from "@src/utils/methods";
+import React from "react";
+import {FormObjectType} from "@src/utils/methods";
 import {TopIcon} from "@src/assets/icons";
-export default function Banner() {
-
-  const [page, setPage] = useState<PublicPageType | null>(null);
-
-  const [error, setError] = useState<string>();
-  useEffect(() => {
-    getPage();
-  }, []);
-
-
-  const getPage = async () => {
-
-    try {
-
-      const res : AxiosResponse<PublicPageType> = await getPageContentEndpoint("HOME_PAGE");
-      // Handle the data as needed (e.g., set it in state)
-      setPage(res.data);
-    } catch (error) {
-      setError("Network Error");
-      // Handle the error as needed
-    }
-  };
-
-  const mappedData = page ? mapContentToFormObject(page?.pageContents) : {};
-
+type bannerType = {
+  content: FormObjectType
+}
+export default function Banner({content } :bannerType) {
 
   return (
     <>
@@ -53,7 +29,7 @@ export default function Banner() {
                       duration={1}
                       animateOnce={true}
                     >
-                      {mappedData.header}
+                      {content.header}
                     </AnimationOnScroll>
                   </div>
                   <div className="textslide">
@@ -62,7 +38,7 @@ export default function Banner() {
                       duration={2}
                       animateOnce={true}
                     >
-                      {mappedData.body}
+                      {content.body}
                     </AnimationOnScroll>
                   </div>
 
@@ -74,7 +50,7 @@ export default function Banner() {
                         animateOnce={true}
                       >
                         {
-                          mappedData.button_link && (
+                            content.button_link && (
                                 <Button
                                     type="primary"
                                     icon={<TopIcon />}
@@ -82,9 +58,9 @@ export default function Banner() {
                                 >
                                   <Link
                                       target="_blanck"
-                                      href={mappedData.button_link}
+                                      href={content.button_link}
                                   >
-                                    {mappedData.button_title}
+                                    {content.button_title}
                                   </Link>
                                 </Button>
                             )

@@ -120,13 +120,13 @@ const Contact: React.FC = () => {
                     <Input placeholder="Email" />
                   </Form.Item>
                   <Form.Item
-                      label="Email"
+                      label="Seconde email"
                       name="email2"
                       rules={[
                         { required: true,type:"email", message: "Veuillez saisir votre seconde Email" },
                       ]}
                   >
-                    <Input placeholder="Email" />
+                    <Input placeholder="Seconde email" />
                   </Form.Item>
                   <Form.Item
                       className="input-phone"

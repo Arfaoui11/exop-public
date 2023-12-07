@@ -1,7 +1,7 @@
 
 import {PageContentType} from "@src/types/page";
 
-type FormObjectType = {
+export type FormObjectType = {
  [key: string]: string | null;
 }
 

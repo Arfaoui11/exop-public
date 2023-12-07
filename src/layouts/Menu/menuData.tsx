@@ -6,7 +6,9 @@ type MenuItem = Required<MenuProps>["items"][number];
 
 export const renderMenuItems = (
   isActive: boolean,
-  setIsActive: Dispatch<SetStateAction<boolean>>
+  setIsActive: Dispatch<SetStateAction<boolean>>,
+  title: string | null,
+  link: string | null,
 ): MenuItem[] => [
   {
     label: (
@@ -83,14 +85,18 @@ export const renderMenuItems = (
   {
     label: (
       <div className="contact-form">
-        <Button type="primary" className="InterSemiBoldFont btn-link">
-          <Link
-            target="_blanck"
-            href="http://192.168.34.135:7001/exop-frontoffice/"
-          >
-            Déposer une requête
-          </Link>
-        </Button>
+        {
+          link && (
+                <Button type="primary" className="InterSemiBoldFont btn-link">
+                  <Link
+                      target="_blanck"
+                      href={link}
+                  >
+                    {title}
+                  </Link>
+                </Button>
+            )
+        }
       </div>
     ),
     type: "group",

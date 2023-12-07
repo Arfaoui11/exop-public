@@ -40,9 +40,7 @@ export default function Home() {
       <>
         {page?.pageContents ? (
       <>
-        <Banner />
-
-
+        <Banner content={mappedData}/>
             <>
               <div className="features content_padding">
                 <div className="layout_padding">
