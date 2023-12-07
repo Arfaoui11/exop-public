@@ -45,28 +45,6 @@ export default function Claims() {
 
     delete values.files;
     formData.append("properties", JSON.stringify(values));
-   /* try {
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_BACKEND_API_URL + "/claims/public",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-      const data = await response.json();
-
-      if (data.error) {
-        const errorMsg = data.message as ObjectKey;
-        setError(serverErrors[errorMsg]);
-        setIsLoading(false);
-      } else {
-        setIsModalOpen(true);
-      }
-    } catch (error) {
-      setError("Network Error");
-      setIsLoading(false);
-    }*/
-
       try {
 
         const res : AxiosResponse<ClaimType> = await sendClaim(formData);

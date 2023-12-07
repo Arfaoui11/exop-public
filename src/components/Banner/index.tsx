@@ -73,18 +73,22 @@ export default function Banner() {
                         duration={5}
                         animateOnce={true}
                       >
-                        <Button
-                          type="primary"
-                          icon={<TopIcon />}
-                          className="btn-banner"
-                        >
-                          <Link
-                            target="_blanck"
-                            href="http://192.168.34.135:7001/exop-frontoffice/"
-                          >
-                            Déposer une requête
-                          </Link>
-                        </Button>
+                        {
+                          mappedData.button_link && (
+                                <Button
+                                    type="primary"
+                                    icon={<TopIcon />}
+                                    className="btn-banner"
+                                >
+                                  <Link
+                                      target="_blanck"
+                                      href={mappedData.button_link}
+                                  >
+                                    {mappedData.button_title}
+                                  </Link>
+                                </Button>
+                            )
+                        }
                       </AnimationOnScroll>
                     </Col>
                   </div>
