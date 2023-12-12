@@ -1,13 +1,15 @@
-import { Menu } from "antd";
+import { getPageContentEndpoint } from "@src/api";
+import { PublicPageType } from "@src/types/page";
+import { mapContentToFormObject } from "@src/utils/methods";
+import { Layout, Menu } from "antd";
+import { AxiosResponse } from "axios/index";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import logo from "../../assets/exop.svg";
 import { renderMenuItems } from "../Menu/menuData";
-import {PublicPageType} from "@src/types/page";
-import {AxiosResponse} from "axios/index";
-import {getPageContentEndpoint} from "@src/api";
-import {mapContentToFormObject} from "@src/utils/methods";
+
+const { Header } = Layout;
 
 const Navbar = () => {
   const [page, setPage] = useState<PublicPageType | null>(null);
@@ -16,10 +18,10 @@ const Navbar = () => {
     getPage().then();
   }, []);
   const getPage = async () => {
-
     try {
-
-      const res : AxiosResponse<PublicPageType> = await getPageContentEndpoint("HOME_PAGE");
+      const res: AxiosResponse<PublicPageType> = await getPageContentEndpoint(
+        "HOME_PAGE"
+      );
       // Handle the data as needed (e.g., set it in state)
       setPage(res.data);
     } catch (error) {
@@ -32,7 +34,7 @@ const Navbar = () => {
 
   const [isActive, setIsActive] = useState(false);
   return (
-    <div className="header">
+    <Header className="header">
       <div className="content-menu">
         <div className="links">
           <Link href="/" onClick={() => setIsActive(false)}>
@@ -45,11 +47,16 @@ const Navbar = () => {
             mode="horizontal"
             defaultSelectedKeys={["2"]}
             className="public-menu InterSemiBoldFont"
-            items={renderMenuItems(isActive, setIsActive,mappedData.button_title,mappedData.button_link)}
+            items={renderMenuItems(
+              isActive,
+              setIsActive,
+              mappedData.button_title,
+              mappedData.button_link
+            )}
           />
         </div>
       </div>
-    </div>
+    </Header>
   );
 };
 
