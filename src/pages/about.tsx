@@ -1,13 +1,12 @@
+import { getPageContentEndpoint } from "@src/api";
 import BannerPage from "@src/components/Banner/BannerPage";
+import { PublicPageType } from "@src/types/page";
+import { mapContentToFormObject } from "@src/utils/methods";
 import "animate.css/animate.min.css";
-import {Alert, Col, Divider, Row, Skeleton, Typography} from "antd";
+import { Alert, Col, Divider, Image, Row, Skeleton, Typography } from "antd";
+import { AxiosResponse } from "axios";
 import Head from "next/head";
-import Image from "next/image";
-import {useEffect, useState} from "react";
-import {PublicPageType} from "@src/types/page";
-import {getPageContentEndpoint} from "@src/api";
-import {mapContentToFormObject} from "@src/utils/methods";
-import {AxiosResponse} from "axios";
+import { useEffect, useState } from "react";
 const { Paragraph, Title } = Typography;
 export default function Home() {
   const [page, setPage] = useState<PublicPageType | null>(null);
@@ -16,10 +15,10 @@ export default function Home() {
     getPage().then();
   }, []);
   const getPage = async () => {
-
     try {
-
-      const res : AxiosResponse<PublicPageType> = await getPageContentEndpoint("ABOUT_EXOP");
+      const res: AxiosResponse<PublicPageType> = await getPageContentEndpoint(
+        "ABOUT_EXOP"
+      );
       // Handle the data as needed (e.g., set it in state)
       setPage(res.data);
     } catch (error) {
@@ -37,36 +36,49 @@ export default function Home() {
       </Head>
       <BannerPage title="Connaitre EXOP" />
       {page?.pageContents ? (
-          <div>
-            <div className="content-wrapper page-section">
-              <Title level={5}>
-                <div dangerouslySetInnerHTML={{__html: mappedData.paragraphe_1 || ""}}/>
-              </Title>
-
-            </div>
-            <div className="content-wrapper page-section">
-              <Title level={3}>Points forts et principales fonctionnalités</Title>
-              <Divider/>
-              <Row justify="center" align="middle">
-                <Col xs={24} md={12}>
-                  <Paragraph>
-                    <div dangerouslySetInnerHTML={{__html: mappedData.paragraphe_2 || ""}}/>
-                  </Paragraph>
-                </Col>
-                <Col xs={24} md={12} style={{textAlign: "right"}}>
-                  <Image  width={300} height={400}  src={`data:image/jpeg;base64,${mappedData.imageKey}`}
-                         alt="no image found"/>
-                </Col>
-              </Row>
-            </div>
-            {error && <Alert message={error} type="error" />}
-          </div>
-      ) : (
+        <div>
           <div className="content-wrapper page-section">
-            <Skeleton active/>
+            <Title level={5}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: mappedData.paragraphe_1 || "",
+                }}
+              />
+            </Title>
           </div>
-      )
-      }
+          <div className="content-wrapper page-section">
+            <Title level={3}>Points forts et principales fonctionnalités</Title>
+            <Divider />
+            <Row justify="center" align="middle">
+              <Col xs={24} md={12}>
+                <Paragraph>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: mappedData.paragraphe_2 || "",
+                    }}
+                  />
+                </Paragraph>
+              </Col>
+              <Col xs={24} md={12} style={{ textAlign: "right" }}>
+                <Row justify="center" align="middle">
+                  <Col>
+                    <Image
+                      src={`data:image/jpeg;base64,${mappedData.imageKey}`}
+                      alt="no image found"
+                      preview={false}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </div>
+          {error && <Alert message={error} type="error" />}
+        </div>
+      ) : (
+        <div className="content-wrapper page-section">
+          <Skeleton active />
+        </div>
+      )}
     </>
   );
 }
