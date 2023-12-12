@@ -41,14 +41,10 @@ body {
   padding: 0 1rem;
 }
 .header {
-  position: sticky;
-  width: 100%;
   z-index: 9;
   background-color: white;
   height: 80px;
-}
-main {
-  //margin-top: 80px;
+  padding-inline: 0;
 }
 h1,
 h2,
@@ -114,7 +110,6 @@ h3 {
 }
 /**css form**/
 .contact-form {
-  padding-left: 10%;
   padding-right: 10%;
   display: flex;
   align-items: center;
@@ -135,7 +130,7 @@ h3 {
 .ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(
     .ant-pagination-size-changer
   ):hover
-.ant-select-selector {
+  .ant-select-selector {
   border-color: transparent;
 }
 
@@ -210,11 +205,12 @@ input.contact-form-phone {
 .content-menu {
   padding-left: 10%;
   padding-right: 10%;
-  width: 80%;
+  width: 100%;
   position: fixed;
   z-index: 5;
   background-color: white;
-  border-bottom: 1px solid #f3f3f3;
+  // border-bottom: 1px solid #f3f3f3;
+  box-sizing: border-box;
 }
 /**end csss form**/
 .ant-divider-horizontal {

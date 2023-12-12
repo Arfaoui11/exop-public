@@ -1,19 +1,20 @@
-import { Layout as AntLayout } from 'antd';
+import { Layout as AntLayout } from "antd";
 import React from "react";
 import Footer from "./Footer/index";
-import Navbar from "./Header/index";
+import Header from "./Header/index";
 type LayoutProps = {
-  children?: React.ReactNode; 
-}
-const {Content} = AntLayout;
+  children?: React.ReactNode;
+};
+const { Content } = AntLayout;
+
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-     <>
-      <Navbar />
-      <Content className=''>{children}</Content>
+    <AntLayout>
+      <Header />
+      <Content className="">{children}</Content>
       <Footer />
-    </>
-  )
-}
+    </AntLayout>
+  );
+};
 
-export default Layout
+export default Layout;

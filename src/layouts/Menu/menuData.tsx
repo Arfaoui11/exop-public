@@ -1,15 +1,13 @@
-import { Button, type MenuProps } from "antd";
+import { Button } from "antd";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
-
-type MenuItem = Required<MenuProps>["items"][number];
 
 export const renderMenuItems = (
   isActive: boolean,
   setIsActive: Dispatch<SetStateAction<boolean>>,
   title: string | null,
-  link: string | null,
-): MenuItem[] => [
+  link: string | null
+): any[] => [
   {
     label: (
       <Link
@@ -20,7 +18,6 @@ export const renderMenuItems = (
         <span className="nav-text">Connaitre EXOP</span>
       </Link>
     ),
-    type: "group",
   },
   {
     label: (
@@ -32,7 +29,6 @@ export const renderMenuItems = (
         <span className="nav-text">Réglementations</span>
       </Link>
     ),
-    type: "group",
   },
   {
     label: (
@@ -44,7 +40,6 @@ export const renderMenuItems = (
         <span className="nav-text">Informations utiles</span>
       </Link>
     ),
-    type: "group",
   },
   {
     label: (
@@ -56,7 +51,6 @@ export const renderMenuItems = (
         <span className="nav-text">E-Services</span>
       </Link>
     ),
-    type: "group",
   },
   {
     label: (
@@ -68,7 +62,6 @@ export const renderMenuItems = (
         <span className="nav-text">Réclamations</span>
       </Link>
     ),
-    type: "group",
   },
   {
     label: (
@@ -80,25 +73,18 @@ export const renderMenuItems = (
         <span className="nav-text">Contact</span>
       </Link>
     ),
-    type: "group",
   },
   {
     label: (
       <div className="contact-form">
-        {
-          link && (
-                <Button type="primary" className="InterSemiBoldFont btn-link">
-                  <Link
-                      target="_blanck"
-                      href={link}
-                  >
-                    {title}
-                  </Link>
-                </Button>
-            )
-        }
+        {link && (
+          <Button type="primary" className="InterSemiBoldFont btn-link">
+            <Link target="_blanck" href={link}>
+              {title}
+            </Link>
+          </Button>
+        )}
       </div>
     ),
-    type: "group",
   },
 ];
