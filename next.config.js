@@ -2,10 +2,10 @@ const withLess = require("next-with-less");
 
 module.exports = withLess({
   // reactStrictMode: true,
-  basePath:"/lp",
+  basePath: "/lp",
   lessLoaderOptions: {},
-    assetPrefix: '/lp/',
-  images:{
-unoptimized:true
+  assetPrefix: '/lp/',
+  images: {
+    unoptimized: true
   }
 });
