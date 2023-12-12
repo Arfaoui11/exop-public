@@ -10,7 +10,7 @@ This is the landing page of exop [LP](http://192.168.34.135:7001/lp/) project bo
 yarn build
 
 # Step 2
-yarn npx next export
+yarn next export
 
 ```
 This will generate a folder called "Out", thats the main folder we will package with maven to generate the war file

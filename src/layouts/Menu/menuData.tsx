@@ -76,7 +76,7 @@ export const renderMenuItems = (
   },
   {
     label: (
-      <div className="contact-form">
+      <div>
         {link && (
           <Button type="primary" className="InterSemiBoldFont btn-link">
             <Link target="_blanck" href={link}>

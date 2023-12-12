@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:weblogic": "cp -r out/* ./java-weblogic/src/main/webapp && cd ./java-weblogic && mvn clean && mvn package",
+    "build-war": "yarn build && yarn next export && yarn build:weblogic",
     "start": "next start -p 3002",
     "lint": "next lint",
     "prepare": "husky install"
