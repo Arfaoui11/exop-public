@@ -11,9 +11,11 @@ const { Paragraph, Title } = Typography;
 export default function Home() {
   const [page, setPage] = useState<PublicPageType | null>(null);
   const [error, setError] = useState<string>();
+
   useEffect(() => {
     getPage().then();
   }, []);
+
   const getPage = async () => {
     try {
       const res: AxiosResponse<PublicPageType> = await getPageContentEndpoint(

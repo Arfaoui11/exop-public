@@ -81,6 +81,27 @@ h3 {
 }
 .features {
   height: 80vh;
+  .ant-carousel {
+    .slick-slider {
+      .slick-arrow {
+        background: transparent !important;
+        &:before {
+          background: transparent !important;
+        }
+      }
+      .slick-dots {
+        z-index: 8;
+        li {
+          button {
+            background-color: #2c72f1;
+            &:before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 .features h4 {
   margin-bottom: 0;

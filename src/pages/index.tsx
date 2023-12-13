@@ -7,6 +7,7 @@ import { mapContentToFormObject } from "@src/utils/methods";
 import "animate.css";
 import { Alert, Button, Col, Row, Skeleton } from "antd";
 import { AxiosResponse } from "axios";
+import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimationOnScroll } from "react-animation-on-scroll";
@@ -34,6 +35,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>EXPO | Accueil</title>
+      </Head>
       {page?.pageContents ? (
         <>
           <Banner content={mappedData} />
