@@ -74,8 +74,7 @@ export type sendEmailType = {
     lastName: string;
     phoneNumber: string;
     message: string;
-    email1: string;
-    email2: string;
+    email: string;
 }
 
 
