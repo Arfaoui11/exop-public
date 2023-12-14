@@ -16,7 +16,7 @@ const axiosApiInstance = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_BACKEND_API_URL}`,
 });
 const axiosPublicInstance = axios.create({
-    baseURL: `${process.env.NEXT_PUBLIC_BACKEND_API_URL_LOCAL}`,
+    baseURL: `${process.env.NEXT_PUBLIC_BACKEND_API_PUBLIC_URL}`,
 });
 
 axiosApiInstance.interceptors.request.use(

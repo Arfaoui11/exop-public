@@ -1,12 +1,15 @@
+import { GlobalOutlined } from "@ant-design/icons";
+import { getPageContentEndpoint } from "@src/api";
 import BannerPage from "@src/components/Banner/BannerPage";
+import { PublicPageType } from "@src/types/page";
 import "animate.css/animate.min.css";
-import {Alert, Col, List, Row, Skeleton, Typography} from "antd";
+import { Alert, Card, Col, Row, Skeleton, Typography } from "antd";
+import { AxiosResponse } from "axios";
 import Head from "next/head";
-import { PublicPageType} from "@src/types/page";
-import {useEffect, useState} from "react";
-import {getPageContentEndpoint} from "@src/api";
-import {AxiosResponse} from "axios";
-const {  Title } = Typography;
+import { useEffect, useState } from "react";
+
+const { Title, Text } = Typography;
+
 export default function Services() {
   const [page, setPage] = useState<PublicPageType | null>(null);
   const [error, setError] = useState<string>();
@@ -14,10 +17,10 @@ export default function Services() {
     getPage().then();
   }, []);
   const getPage = async () => {
-
     try {
-
-      const res : AxiosResponse<PublicPageType> = await getPageContentEndpoint("E_SERVICES");
+      const res: AxiosResponse<PublicPageType> = await getPageContentEndpoint(
+        "E_SERVICES"
+      );
 
       // Handle the data as needed (e.g., set it in state)
       setPage(res.data);
@@ -33,41 +36,32 @@ export default function Services() {
         <title>EXPO | E-services</title>
       </Head>
       <BannerPage title="E-services" />
-      {
-        page?.pageContents ? (
-                <div className="content-wrapper page-section">
-                  <Row>
-                    <Col xs={8} md={12}>
-                      <Title level={1}>Links</Title>
-                    </Col>
-                    <Col xs={24} md={18}>
-                      <List
-                          dataSource={page?.pageContents}
-                          renderItem={(item) => (
-                              item.contentValue && (
-                                  <ul>
-                                    <List.Item >
-                                      <li>
-                                        <a href={item.contentValue} style={{ fontSize: 18 }} target="_blank" rel="noopener noreferrer">
-                                          {item.title}
-                                        </a>
-                                      </li>
-                                    </List.Item>
-                                  </ul>
-                              )
-                          )}
-                      />
-                    </Col>
-                  </Row>
-                  {error && <Alert message={error} type="error" />}
-                </div>
-            ) :
-            (
-                <div className="content-wrapper page-section">
-                  <Skeleton active />
-                </div>
-            )
-      }
+      {page?.pageContents ? (
+        <div className="content-wrapper page-section services">
+          <Row>
+            <Col xs={8} md={12}>
+              <Title level={1}>Links</Title>
+            </Col>
+            <Col xs={24} md={18}>
+              {page.pageContents.map(({ id, title, contentValue }) => (
+                <Card key={id} className="service-card">
+                  <GlobalOutlined />
+                  <Text strong>
+                    <a href={contentValue || ""} target="_blank">
+                      {title}
+                    </a>
+                  </Text>
+                </Card>
+              ))}
+            </Col>
+          </Row>
+          {error && <Alert message={error} type="error" />}
+        </div>
+      ) : (
+        <div className="content-wrapper page-section">
+          <Skeleton active />
+        </div>
+      )}
       {/*<div className="content-wrapper page-section">
         <Row>
           <Col xs={24}>
