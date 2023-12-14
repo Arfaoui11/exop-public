@@ -64,11 +64,6 @@ export interface IFilterParams extends ISearchSortPaginateComposedType<PublicDoc
     creationYear?: string;
 }
 
-export type SelectOptionType = {
-    label?: string;
-    value?: string | number | boolean;
-};
-
 export type sendEmailType = {
     firstName: number;
     lastName: string;
@@ -76,9 +71,6 @@ export type sendEmailType = {
     message: string;
     email: string;
 }
-
-
-
 export interface IPaginationType {
     page?: number;
     pageSize?: number;

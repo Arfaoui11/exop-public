@@ -6,6 +6,8 @@ import {AxiosResponse} from "axios";
 import {getPageContentEndpoint, sendEmailContact} from "@src/api";
 import {PublicPageType, sendEmailType} from "@src/types/page";
 import {mapContentToFormObject} from "@src/utils/methods";
+import {getContactRules} from "@src/utils/rules";
+import {prefixOptions} from "@src/utils/types";
 const { Option } = Select;
 const Contact: React.FC = () => {
 
@@ -52,11 +54,12 @@ const Contact: React.FC = () => {
 
   const prefixSelector = (
       <Form.Item name="prefix" noStyle>
-        <Select defaultValue="216" className="input-addon-before">
-          <Option value="216">+216</Option>
-          <Option value="213">+213</Option>
-          <Option value="87">+87</Option>
-        </Select>
+          <Select
+              defaultValue="216"
+              className="input-addon-before"
+              allowClear
+              options={prefixOptions}
+          />
       </Form.Item>
   );
   return (
@@ -85,12 +88,7 @@ const Contact: React.FC = () => {
                       <Form.Item
                           name="firstName"
                           label="Nom"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Veuillez saisir votre nom",
-                            },
-                          ]}
+                          rules={getContactRules('firstName')}
                       >
                         <Input placeholder="Nom" />
                       </Form.Item>
@@ -99,12 +97,7 @@ const Contact: React.FC = () => {
                       <Form.Item
                           name="lastName"
                           label="Prénom"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Veuillez saisir votre Prénom",
-                            },
-                          ]}
+                          rules={getContactRules('lastName')}
                       >
                         <Input placeholder="Prénom" />
                       </Form.Item>
@@ -113,9 +106,7 @@ const Contact: React.FC = () => {
                   <Form.Item
                       label="Email"
                       name="email"
-                      rules={[
-                        { required: true,type:"email", message: "Veuillez saisir votre Email" },
-                      ]}
+                      rules={getContactRules('email')}
                   >
                     <Input placeholder="Email" />
                   </Form.Item>
@@ -123,12 +114,7 @@ const Contact: React.FC = () => {
                       className="input-phone"
                       name="phoneNumber"
                       label="Numéro de télephone"
-                      rules={[
-                        {
-                          required: true,
-                          message: "Veuillez saisir votre Numéro de télephone",
-                        },
-                      ]}
+                      rules={getContactRules('phoneNumber')}
                   >
                     <Input
                         className="contact-form-phone"
@@ -140,12 +126,7 @@ const Contact: React.FC = () => {
                   <Form.Item
                       name="message"
                       label="Message"
-                      rules={[
-                        {
-                          required: true,
-                          message: "Veuillez saisir votre message!",
-                        },
-                      ]}
+                      rules={getContactRules('message')}
                   >
                     <Input.TextArea
                         placeholder="Ecrire votre demande ici..."
