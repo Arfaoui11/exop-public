@@ -46,6 +46,15 @@ export const prefixOptions = [
   { label: "+81", value: "+81" },
 ];
 
+export const regulationNaturesOptions = [
+  {label: "Loi", value: "LOI"},
+  {label: "Décret-loi", value: "DECRET_LOI"},
+  {label: "Décret", value: "DECRET"},
+  {label: "Avis de change", value: "AVIS_DE_CHANGE"},
+  {label: "Circulaire", value: "CIRCULAIRE"},
+  {label: "Note aux IAT", value: "NOTE_AUX_IAT"},
+];
+
 export interface IChildType {
   id: number;
   title: string;
