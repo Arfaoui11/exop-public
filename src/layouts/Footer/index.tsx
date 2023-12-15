@@ -2,10 +2,8 @@ import { Col, Divider, Layout, Row } from "antd";
 import Image from "next/image";
 import logo from "../../assets/whitelogo.svg";
 import Link from "next/link";
-import {useState} from "react";
 const { Footer } = Layout;
 const FooterBottom = () => {
-  const [isActive, setIsActive] = useState(false);
   return (
     <Footer className="footer">
       <div >
@@ -30,8 +28,6 @@ const FooterBottom = () => {
                 <li>
                   <Link
                       href="/about"
-                      onClick={() => setIsActive(true)}
-                      className={isActive ? "active" : ""}
                   >
                     <span className="nav-text">Connaitre EXOP</span>
                   </Link>
@@ -39,8 +35,6 @@ const FooterBottom = () => {
                 <li>
                   <Link
                       href="/regulations"
-                      onClick={() => setIsActive(true)}
-                      className={isActive ? "active" : ""}
                   >
                     <span className="nav-text">Réglementations</span>
                   </Link>
@@ -48,8 +42,6 @@ const FooterBottom = () => {
                 <li>
                   <Link
                       href="/informations"
-                      onClick={() => setIsActive(true)}
-                      className={isActive ? "active" : ""}
                   >
                     <span className="nav-text">Informations utiles</span>
                   </Link>
@@ -57,8 +49,6 @@ const FooterBottom = () => {
                 <li>
                   <Link
                       href="/services"
-                      onClick={() => setIsActive(true)}
-                      className={isActive ? "active" : ""}
                   >
                     <span className="nav-text">E-Services</span>
                   </Link>
@@ -66,8 +56,6 @@ const FooterBottom = () => {
                 <li>
                   <Link
                       href="/claims"
-                      onClick={() => setIsActive(true)}
-                      className={isActive ? "active" : ""}
                   >
                     <span className="nav-text">Réclamations</span>
                   </Link>
@@ -75,8 +63,6 @@ const FooterBottom = () => {
                 <li>
                   <Link
                       href="/#contact-form"
-                      onClick={() => setIsActive(true)}
-                      className={isActive ? "active" : ""}
                   >
                     <span className="nav-text">Contact</span>
                   </Link>
