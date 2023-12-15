@@ -115,7 +115,7 @@ export default function Regulations() {
       <Head>
         <title>EXPO | Réglementations</title>
       </Head>
-      <BannerPage title="Réglementations" />
+      <BannerPage title={mappedData.title || ""} />
       {
         page?.pageContents ?   (
                 <div className="content-wrapper page-section">
