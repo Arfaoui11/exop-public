@@ -10,6 +10,7 @@ import {formatFileSize, mapContentToFormObject} from "@src/utils/methods";
 import {ListDataType} from "@src/utils/types";
 import {DownloadOutlined, EyeOutlined} from "@ant-design/icons";
 import {AxiosResponse} from "axios";
+import BannerPage from "@src/components/Banner/BannerPage";
 const { Paragraph } = Typography;
 export default function Regulations() {
   const [documents, setDocuments] = useState<ListDataType<IPublicDocument[]> | null>(null);
@@ -30,7 +31,7 @@ export default function Regulations() {
 
     try {
 
-      const res : AxiosResponse<PublicPageType> = await getPageContentEndpoint("E_SERVICES");
+      const res : AxiosResponse<PublicPageType> = await getPageContentEndpoint("REGULATION");
       // Handle the data as needed (e.g., set it in state)
       setPage(res.data);
     } catch (error) {
@@ -100,7 +101,7 @@ export default function Regulations() {
     // Optionally, set the window title
     if (newWindow) {
       newWindow.document.title = 'PDF Viewer';
-      newWindow.name = "hello ";
+      newWindow.name = "PDF Viewer";
     }
 
 
@@ -112,8 +113,9 @@ export default function Regulations() {
   return (
     <>
       <Head>
-        <title>EXPO | Réglementationss</title>
+        <title>EXPO | Réglementations</title>
       </Head>
+      <BannerPage title={mappedData.title || ""} />
       {
         page?.pageContents ?   (
                 <div className="content-wrapper page-section">
@@ -135,16 +137,14 @@ export default function Regulations() {
                       <Filter
                           onFilter={handleFilterSubmit}
                       />
-
-
                       <Row gutter={[16, 16]} className="files-container">
                         {documents && (
                             <>
                               {documents?.content.map((document: PublicDocument) => {
                                 return (
                                     <>
-                                      <Col xs={24} md={12}   className="btn-pdf">
-                                        <a target="_blank" rel="">
+                                      <Col xs={24} md={12} className="btn-pdf">
+                                        <a target="_blank" rel="" >
                                           {
                                             document.type.includes("application/pdf") ?
                                                 (<Button type="primary" ghost icon={<EyeOutlined/>}
@@ -157,27 +157,27 @@ export default function Regulations() {
                                                 </Button>)
                                           }
                                         </a>
-
                                       </Col>
                                     </>
                                 );
                               })}
                             </>
                         )}
-
                       </Row>
                     </Col>
                     {
-                        mappedData.imageKey &&
-                        (<Col xs={24} md={6} style={{textAlign: "center"}}>
-                          <Image width="350" height="500" src={`data:image/jpeg;base64,${mappedData.imageKey}`}
-                                 alt=""/>
-                        </Col>)
+                        !!mappedData.imageKey &&
+                        (
+                            <Col xs={24} md={6} style={{textAlign: "right"}}>
+                              <Image width="350" height="500" src={`data:image/jpeg;base64,${mappedData.imageKey}`}
+                                     alt=""/>
+                            </Col>
+                        )
                     }
                     <Divider/>
                     <Col xs={24} md={18}>
                       <Pagination defaultCurrent={current} onChange={onChange} total={documents?.totalElement}
-                                  showTotal={(total) => `Total ${total} items`} defaultPageSize={6}/>
+                                  showTotal={(total) => `Total ${total} articles`} defaultPageSize={6}/>
                     </Col>
                   </Row>
 

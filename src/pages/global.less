@@ -58,6 +58,14 @@ h6,
   font-family: "InterRegular";
   font-weight: 400;
 }
+.InterRegularFontSub {
+  font-size: 22px;
+}
+.InterRegularFontTitle {
+  font-family: "InterRegular";
+  font-size: 25px;
+  color: #0022a1;
+}
 h1 {
   font-size: 36px;
   color: @gray-title-color;
@@ -270,7 +278,7 @@ input.contact-form-phone {
   width: 48px;
   height: 48px;
   font-size: 20px;
-  background: #2c72f1;
+  background: #eeeef5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -308,18 +316,11 @@ input.contact-form-phone {
       color: white;
       background-color: @template-color;
       border-color: @template-color;
-      svg {
-        color: @template-color;
-        background-color: white;
+      span > svg {
+          color: @template-color;
+          background-color: white;
+          border-radius: 30%;
       }
-    }
-  }
-  .anticon {
-    svg {
-      color: white;
-      background-color: @template-color;
-      padding: 10px;
-      border-radius: 50%;
     }
   }
 }

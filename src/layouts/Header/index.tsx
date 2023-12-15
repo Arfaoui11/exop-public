@@ -2,12 +2,12 @@ import { getPageContentEndpoint } from "@src/api";
 import { PublicPageType } from "@src/types/page";
 import { mapContentToFormObject } from "@src/utils/methods";
 import { Layout, Menu } from "antd";
-import { AxiosResponse } from "axios/index";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import logo from "../../assets/exop.svg";
 import { renderMenuItems } from "../Menu/menuData";
+import {AxiosResponse} from "axios";
 
 const { Header } = Layout;
 

@@ -6,37 +6,18 @@ import {
   Form, Input,
   Row,
   Select,
-  Typography
 } from 'antd';
 
 import React from 'react';
 import dayjs from "dayjs";
 import {IFilterParams, IListPublicDocsParams} from "@src/types/page";
-
-const { Title, Paragraph } = Typography;
-
-
-const { Item } = Form;
-const { RangePicker } = DatePicker;
+import {regulationNaturesOptions} from "@src/utils/types";
 
 type FilterPropsType = {
   onFilter: (params: IFilterParams) => void;
 }
 
 const Filter: React.FC<FilterPropsType> = ({ onFilter }) => {
-
-
-
-
-  const regulationNaturesOptions = [
-    {label: "Loi", value: "LOI"},
-    {label: "Décret-loi", value: "DECRET_LOI"},
-    {label: "Décret", value: "DECRET"},
-    {label: "Avis de change", value: "AVIS_DE_CHANGE"},
-    {label: "Circulaire", value: "CIRCULAIRE"},
-    {label: "Note aux IAT", value: "NOTE_AUX_IAT"},
-  ];
-
 
   const {Item} = Form;
   // const { RangePicker } = DatePicker;
@@ -63,9 +44,6 @@ const Filter: React.FC<FilterPropsType> = ({ onFilter }) => {
     if (newValues.creationYear) params.creationYear = String(dayjs(newValues.creationYear).year());
     onFilter(params);
   }
-
-
-
   return (
       <Form
           form={filterForm}
@@ -86,7 +64,7 @@ const Filter: React.FC<FilterPropsType> = ({ onFilter }) => {
               />
             </Item>
           </Col>
-          <Col md={12} sm={16} xs={12}>
+          <Col md={12} sm={16} xs={12} className="datepicker_input">
             <Item name="creationYear" label="Année de création">
               <DatePicker
                   picker="year"
@@ -96,8 +74,8 @@ const Filter: React.FC<FilterPropsType> = ({ onFilter }) => {
               />
             </Item>
           </Col>
-          <Col md={18} sm={12} xs={24}>
-            <Item name="search" label="Mots clés">
+          <Col md={18} sm={12} xs={24} className="search_input">
+            <Item name="search" label="Mots clés" >
               <Input
                   placeholder="Recherche"
                   prefix={<SearchOutlined />}
@@ -105,7 +83,7 @@ const Filter: React.FC<FilterPropsType> = ({ onFilter }) => {
               />
             </Item>
           </Col>
-          <Col md={6} sm={12} xs={24} style={{ paddingTop: '53px' }}>
+          <Col md={6} sm={12} xs={24} style={{ paddingTop: '47px' }} className="filter_button">
             <Button type="primary" htmlType="submit">
               Filtrer <FilterOutlined />
             </Button>

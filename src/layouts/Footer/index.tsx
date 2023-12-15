@@ -1,42 +1,71 @@
 import { Col, Divider, Layout, Row } from "antd";
 import Image from "next/image";
 import logo from "../../assets/whitelogo.svg";
+import Link from "next/link";
 const { Footer } = Layout;
 const FooterBottom = () => {
   return (
     <Footer className="footer">
-      <div>
+      <div >
         <Row>
           <Col span={24}>
-            <Image
-              className="logoFooter"
-              style={{
-                width: "100%",
-              }}
-              src={logo}
-              alt="logo"
-            />
+            <Link href="/" >
+              <div className="logo-header">
+                <Image
+                    className="logoFooter"
+                    style={{
+                      width: "100%",
+                    }}
+                    src={logo}
+                    alt="logo"
+                />
+              </div>
+            </Link>
           </Col>
           <Col span={24}>
             <div className="menuFooter">
               <ul>
                 <li>
-                  <a>Connaitre EXOP</a>
+                  <Link
+                      href="/about"
+                  >
+                    <span className="nav-text">Connaitre EXOP</span>
+                  </Link>
                 </li>
                 <li>
-                  <a>Réglementations</a>
+                  <Link
+                      href="/regulations"
+                  >
+                    <span className="nav-text">Réglementations</span>
+                  </Link>
                 </li>
                 <li>
-                  <a>Informations utiles</a>
+                  <Link
+                      href="/informations"
+                  >
+                    <span className="nav-text">Informations utiles</span>
+                  </Link>
                 </li>
                 <li>
-                  <a>E-Services</a>
+                  <Link
+                      href="/services"
+                  >
+                    <span className="nav-text">E-Services</span>
+                  </Link>
                 </li>
                 <li>
-                  <a>Réclamations</a>
+                  <Link
+                      href="/claims"
+                  >
+                    <span className="nav-text">Réclamations</span>
+                  </Link>
                 </li>
                 <li>
-                  <a>Contact</a>
+                  <Link
+                      href="/#contact-form"
+                  >
+                    <span className="nav-text">Contact</span>
+                  </Link>
                 </li>
               </ul>
             </div>
