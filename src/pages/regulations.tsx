@@ -1,9 +1,8 @@
 import Filter from "@src/components/Filter";
 import "animate.css/animate.min.css";
-import {Alert, Button, Col, Divider, Pagination, PaginationProps, Row, Skeleton, Typography} from "antd";
+import {Alert, Button, Col, Image, Divider, Pagination, PaginationProps, Row, Skeleton, Typography} from "antd";
 import Head from "next/head";
-import Image from "next/image";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {IFilterParams, IPublicDocument, PublicDocument, PublicPageType} from "@src/types/page";
 import {getPageContentEndpoint, getPublicDocumentsEndpoint, viewDocumentEndpoint} from "@src/api";
 import {formatFileSize, mapContentToFormObject} from "@src/utils/methods";
@@ -119,8 +118,8 @@ export default function Regulations() {
       {
         page?.pageContents ?   (
                 <div className="content-wrapper page-section">
-                  <Row>
-                    <Col xs={24} md={18}>
+                  <Row justify="center" align="middle">
+                    <Col xs={24} md={14}>
                       <Paragraph className="pb-3">
                         {mappedData.description} {" "}
                         {
@@ -168,9 +167,16 @@ export default function Regulations() {
                     {
                         !!mappedData.imageKey &&
                         (
-                            <Col xs={24} md={6} style={{textAlign: "right"}}>
-                              <Image width="350" height="500" src={`data:image/jpeg;base64,${mappedData.imageKey}`}
-                                     alt=""/>
+                            <Col xs={24} md={8} style={{ textAlign: "right" }}>
+                              <Row justify="center" align="middle">
+                                <Col>
+                                  <Image
+                                      src={`data:image/jpeg;base64,${mappedData.imageKey}`}
+                                      alt="no image found"
+                                      preview={false}
+                                  />
+                                </Col>
+                              </Row>
                             </Col>
                         )
                     }
