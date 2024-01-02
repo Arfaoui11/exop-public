@@ -51,7 +51,9 @@ export default function Home() {
                 >
                   <Row gutter={[16, 48]}>
                     <Col>
-                      <h1 className="InterRegularFontTitle">{mappedData.title_1}</h1>
+                      <h1 className="InterRegularFontTitle">
+                        {mappedData.title_1}
+                      </h1>
                     </Col>
                   </Row>
                 </AnimationOnScroll>
@@ -62,7 +64,9 @@ export default function Home() {
                 >
                   <Row gutter={[16, 48]}>
                     <Col xs={24} sm={24} md={18} lg={18} xl={18}>
-                      <h1 className="InterRegularFontSub">{mappedData.title_11}</h1>
+                      <h1 className="InterRegularFontSub">
+                        {mappedData.title_11}
+                      </h1>
                       <h3 className="InterRegularFont">
                         {mappedData.description_1}
                       </h3>
@@ -108,15 +112,15 @@ export default function Home() {
             </div>
             {error && <Alert message={error} type="error" />}
           </>
-          <section id="contact-form">
-            <Contact />
-          </section>
         </>
       ) : (
         <div className="content-wrapper page-section">
           <Skeleton active />
         </div>
       )}
+      <section id="contact-form">
+        <Contact />
+      </section>
     </>
   );
 }
