@@ -45,10 +45,10 @@ const Contact: React.FC = () => {
             // Handle the data as needed (e.g., set it in state)
             setSuccessMessage(res.data.toString());
             setIsLoading(false);
+            resetFields();
             setTimeout(function () {
                 setSuccessMessage(null);
-                resetFields();
-            }, 5000)
+            }, 2500)
         } catch (error) {
             // Handle the error as needed
             setError("Network Error");
@@ -59,7 +59,7 @@ const Contact: React.FC = () => {
 
     const onFinishFailed = (errorInfo: any) => {
         setError(errorInfo.data);
-
+        setIsLoading(false);
     };
 
     const prefixSelector = (
