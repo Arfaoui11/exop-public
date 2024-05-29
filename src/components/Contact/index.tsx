@@ -48,7 +48,7 @@ const Contact: React.FC = () => {
             resetFields();
             setTimeout(function () {
                 setSuccessMessage(null);
-            }, 2000)
+            }, 2500)
         } catch (error) {
             // Handle the error as needed
             setError("Network Error");
