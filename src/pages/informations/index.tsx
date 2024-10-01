@@ -62,9 +62,10 @@ const Informations: React.FC<IMainLayoutProps> = () => {
                         <Title level={5} className="pb-3">
                             <Row justify="center" align="top">
                                 <Image
-                                    style={{ width: "174px", height: "auto" }}
+                                    style={{ width: "300px", height: "auto" }}
                                     src={`data:image/jpeg;base64,${section.mediaFileContent}` }
                                     alt=""
+                                    preview={false}
                                     className="pb-3"
                                 />
                             </Row>

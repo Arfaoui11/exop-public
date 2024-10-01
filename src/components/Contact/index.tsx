@@ -43,12 +43,15 @@ const Contact: React.FC = () => {
         try {
             const res: AxiosResponse<String> = await sendEmailContact(values);
             // Handle the data as needed (e.g., set it in state)
-            setSuccessMessage(res.data.toString());
-            setIsLoading(false);
-            resetFields();
-            setTimeout(function () {
-                setSuccessMessage(null);
-            }, 2500)
+            if (res.data)
+            {
+                setSuccessMessage(res.data.toString());
+                setIsLoading(false);
+                resetFields();
+                setTimeout(function () {
+                    setSuccessMessage(null);
+                }, 2500)
+            }
         } catch (error) {
             // Handle the error as needed
             setError("Network Error");
