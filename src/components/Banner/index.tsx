@@ -23,7 +23,7 @@ export default function Banner({content } :bannerType) {
             >
               <Col xs={24} md={12}>
                 <div className="detailBox">
-                  <div className="titleslide">
+                  <div className="titleslide text-align">
                     <AnimationOnScroll
                       animateIn="animate__fadeInLeft"
                       duration={1}
@@ -32,7 +32,7 @@ export default function Banner({content } :bannerType) {
                       {content.header}
                     </AnimationOnScroll>
                   </div>
-                  <div className="textslide">
+                  <div className="textslide text-align">
                     <AnimationOnScroll
                       animateIn="animate__fadeInLeft"
                       duration={2}

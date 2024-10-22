@@ -4,6 +4,12 @@
   color: #ffffff;
   padding: 24px 10%;
   border-top: 1px solid;
+  .ant-divider{
+    border-color: white;
+  }
+  img{
+    max-height: 32px;
+  }
 }
 .menuFooter ul {
   float: left;
@@ -14,7 +20,7 @@
   padding: 0px;
 }
 .logoFooter {
-  margin: 30px 0 15px 0;
+
 }
 .copyrightSection {
   display: flex;
@@ -57,8 +63,19 @@
   }
 }
 
-@media (max-width: 922px) {
+@media (max-width: 768px) {
   .menuFooter ul {
-    display: block;
+    gap: 10px;
+    flex-direction: column;
+    display: flex;
+  }
+  .copyrightSection ul {
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
   }
 }

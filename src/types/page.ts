@@ -7,6 +7,7 @@ export type ContentManagementPagesKeys =
     | "REGULATION"
     | "CONTACT"
     | "UTIL_INFORMATION"
+    | "INFO"
     | "E_SERVICES";
 
 

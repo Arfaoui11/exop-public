@@ -62,41 +62,6 @@ export default function Services() {
           <Skeleton active />
         </div>
       )}
-      {/*<div className="content-wrapper page-section">
-        <Row>
-          <Col xs={24}>
-            <Title level={4}>Services Title</Title>
-          </Col>
-          <Col xs={24}>
-            <Paragraph>Services description</Paragraph>
-          </Col>
-          <Col xs={24}>
-            <a href="../../assets/pdf/exop.pdf" target="_blank" rel="">
-              <Button type="primary" ghost icon={<EyeOutlined />}>
-                Services1.pdf
-              </Button>
-            </a>
-          </Col>
-          <Divider />
-        </Row>
-
-        <Row>
-          <Col xs={24}>
-            <Title level={4}>Services Title</Title>
-          </Col>
-          <Col xs={24}>
-            <Paragraph>Services description</Paragraph>
-          </Col>
-          <Col xs={24}>
-            <a href="../../assets/pdf/exop.pdf" target="_blank" rel="">
-              <Button type="primary" ghost icon={<EyeOutlined />}>
-                Services2.pdf
-              </Button>
-            </a>
-          </Col>
-          <Divider />
-        </Row>
-      </div>*/}
     </>
   );
 }

@@ -118,6 +118,9 @@ h3 {
 .page-section {
   margin-bottom: 60px;
 }
+.error-page {
+  height: 40vh;
+}
 .request-section {
   padding: 100px 0px;
   background: #edf4fa;
@@ -388,6 +391,10 @@ input.contact-form-phone {
   height: 500px;
 }
 
+.text-align {
+  text-align: justify;
+}
+
 /****************************/
 /*********css collaps***********/
 /*.ant-collapse {
@@ -459,5 +466,39 @@ input.contact-form-phone {
   }
   .features {
     height: auto;
+  }
+}
+&.attachment-card {
+  transition: ease 0.5s all;
+  &:hover {
+    box-shadow: 0 0 10px #2c72f1;
+  }
+  border-color:  #2c72f1;
+  .ant-card-body {
+    padding: 14px;
+    position: relative;
+    .ant-card-meta-detail {
+      padding-right: 20px;
+      .ant-card-meta-title {
+        white-space: nowrap;
+      }
+    }
+    .attachment-avatar {
+      .ant-avatar {
+        background-color: #b0bad4;
+      }
+    }
+    .attachment-checkmark {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      color: #2c72f1;
+    }
+    .attachment-download {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      color: #2c72f1;
+    }
   }
 }

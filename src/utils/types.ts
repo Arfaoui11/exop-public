@@ -70,6 +70,41 @@ export interface IChildType {
   answer?: IChildType;
 }
 
+export type AttachmentType = {
+  id: string;
+  fileName: string;
+  fileSize: number;
+  isSent?: boolean;
+  /**
+   * * isSigned
+   * This prop represents whether the document "x" is signed or not.
+   */
+  isSigned?: boolean;
+  /**
+   * * toBeSigned
+   * This prop represents whether the document "x" is listed among the "should be signed" documents or not.
+   */
+  toBeSigned?: boolean;
+  path?: "";
+  signedBy?: string[];
+  /**
+   * isAuthorizedToSign
+   * ? Rules of signature:
+   * * A document can be signed by two members.
+   * * The order of signatures between members is mendatory.
+   * * The memeber "X" should sign the document first, then the member "Y".
+   * * The memeber "Y" cannot sign the document if the the first member hasn't signed yet.
+   */
+  isAuthorizedToSign?: boolean;
+};
+
+export const formatFileSize = (size: number) => {
+  if (!size) return "0 KB";
+  if (size < 1024) return `${size} B`;
+  else if (size < 1024 * 1024) return `${(size / 1024).toFixed(2)} KB`;
+  else return `${(size / (1024 * 1024)).toFixed(2)} MB`;
+};
+
 
 
 

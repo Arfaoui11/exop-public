@@ -51,7 +51,7 @@ export default function Home() {
                 >
                   <Row gutter={[16, 48]}>
                     <Col>
-                      <h1 className="InterRegularFontTitle">
+                      <h1 className="InterRegularFontTitle text-align">
                         {mappedData.title_1}
                       </h1>
                     </Col>
@@ -67,7 +67,7 @@ export default function Home() {
                       <h1 className="InterRegularFontSub">
                         {mappedData.title_11}
                       </h1>
-                      <h3 className="InterRegularFont">
+                      <h3 className="InterRegularFont text-align">
                         {mappedData.description_1}
                       </h3>
                     </Col>

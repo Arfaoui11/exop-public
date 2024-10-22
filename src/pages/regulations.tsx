@@ -1,16 +1,29 @@
 import Filter from "@src/components/Filter";
 import "animate.css/animate.min.css";
-import {Alert, Button, Col, Image, Divider, Pagination, PaginationProps, Row, Skeleton, Typography} from "antd";
+import {
+  Alert,
+  Col,
+  Image,
+  Divider,
+  Pagination,
+  PaginationProps,
+  Row,
+  Skeleton,
+  Typography,
+  Tooltip, Card, Avatar
+} from "antd";
 import Head from "next/head";
 import React, {useEffect, useState} from "react";
 import {IFilterParams, IPublicDocument, PublicDocument, PublicPageType} from "@src/types/page";
 import {getPageContentEndpoint, getPublicDocumentsEndpoint, viewDocumentEndpoint} from "@src/api";
-import {formatFileSize, mapContentToFormObject} from "@src/utils/methods";
-import {ListDataType} from "@src/utils/types";
-import {DownloadOutlined, EyeOutlined} from "@ant-design/icons";
+import { mapContentToFormObject} from "@src/utils/methods";
+import {formatFileSize, ListDataType} from "@src/utils/types";
 import {AxiosResponse} from "axios";
 import BannerPage from "@src/components/Banner/BannerPage";
+import { DownloadOutlined, EyeOutlined} from "@ant-design/icons";
+
 const { Paragraph } = Typography;
+const { Meta } = Card;
 export default function Regulations() {
   const [documents, setDocuments] = useState<ListDataType<IPublicDocument[]> | null>(null);
   const [page, setPage] = useState<PublicPageType | null>(null);
@@ -136,26 +149,35 @@ export default function Regulations() {
                       <Filter
                           onFilter={handleFilterSubmit}
                       />
-                      <Row gutter={[16, 16]} className="files-container">
+                      <Row gutter={[20, 20]} className="files-container">
                         {documents && (
                             <>
                               {documents?.content.map((document: PublicDocument) => {
                                 return (
                                     <>
-                                      <Col xs={24} md={12} className="btn-pdf">
-                                        <a target="_blank" rel="" >
+                                      <Col key={document.id} sm={10} xs={24}>
+                                        <Card className="attachment-card">
+                                          <Meta
+                                              avatar={<Avatar icon={<EyeOutlined />} />}
+                                              title={(
+                                                  <Tooltip title={document.fileName} placement="topLeft">
+                                                    {document.fileName}
+                                                  </Tooltip>
+                                              )}
+                                              description={formatFileSize(document.fileSize)}
+                                              className="attachment-avatar"
+                                          />
                                           {
-                                            document.type.includes("application/pdf") ?
-                                                (<Button type="primary" ghost icon={<EyeOutlined/>}
-                                                         onClick={() => viewPdf(document?.id)}>
-                                                  {document.fileName} - {formatFileSize(document.fileSize)}
-                                                </Button>) :
-                                                (<Button type="primary" ghost icon={<DownloadOutlined/>}
-                                                         onClick={() => download(document?.id)}>
-                                                  {document.fileName} - {formatFileSize(document.fileSize)}
-                                                </Button>)
+                                            document.type.includes("application/pdf") && (
+                                                  <Tooltip title="Voir">
+                                                    <EyeOutlined className="attachment-checkmark" onClick={() => viewPdf(document.id)} />
+                                                  </Tooltip>
+                                              )
                                           }
-                                        </a>
+                                          <Tooltip title="Télécharger">
+                                            <DownloadOutlined className="attachment-download" onClick={() => download(document.id)} />
+                                          </Tooltip>
+                                        </Card>
                                       </Col>
                                     </>
                                 );
