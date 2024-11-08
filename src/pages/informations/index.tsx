@@ -174,7 +174,7 @@ const Informations: React.FC<IMainLayoutProps> = () => {
         {
             page?.sections ?
                 (
-                    <div className="content-wrapper page-section">
+                    <div className="content-wrapper page-section text-align">
                         {!!page && renderCollapseItem(page.sections)}
 
                         {error && <Alert message={error} type="error"/>}
