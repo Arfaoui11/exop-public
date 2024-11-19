@@ -51,7 +51,7 @@ export default function Home() {
           <div className="content-wrapper page-section">
             <Title level={3}>Points forts et principales fonctionnalités</Title>
             <Divider />
-            <Row justify="center" align="middle">
+            <Row >
               <Col xs={24} md={12}>
                 <Paragraph>
                   <div

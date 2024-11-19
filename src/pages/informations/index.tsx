@@ -156,21 +156,25 @@ const Informations: React.FC<IMainLayoutProps> = () => {
       case "QUESTION": {
         return data.answer && (
             <Col span={24}>
-              {data.answer.title}
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: data.answer.title || "",
+                    }}
+                />
             </Col>
         )
       }
-      default:
-        return null;
+        default:
+            return null;
     }
   }
 
-  return (
-    <>
-      <Head>
-        <title>EXPO | Informations Utiles</title>
-      </Head>
-      <BannerPage title="Informations Utiles" />
+    return (
+        <>
+            <Head>
+                <title>EXPO | Informations Utiles</title>
+            </Head>
+            <BannerPage title="Informations Utiles" />
         {
             page?.sections ?
                 (
