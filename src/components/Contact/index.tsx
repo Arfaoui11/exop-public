@@ -8,6 +8,7 @@ import {PublicPageType, sendEmailType} from "@src/types/page";
 import {mapContentToFormObject} from "@src/utils/methods";
 import {getContactRules} from "@src/utils/rules";
 import {prefixOptions} from "@src/utils/types";
+const { TextArea } = Input;
 
 const Contact: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -142,9 +143,10 @@ const Contact: React.FC = () => {
                                     label="Message"
                                     rules={getContactRules('message')}
                                 >
-                                    <Input.TextArea
+                                    <TextArea
                                         placeholder="Ecrire votre demande ici..."
-                                        autoSize={{minRows: 3, maxRows: 5}}
+                                        rows={4}
+                                        maxLength={2501}
                                     />
                                 </Item>
                                 <Item>

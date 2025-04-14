@@ -41,7 +41,7 @@ const contactRules: ContactRulesTypes = {
     ],
     message: [
         { required: true, message: "Veuillez saisir votre message!" },
-        { max: 250, message: "champs non valide"}
+        { max: 2500, message: "champs non valide"}
     ],
     lastName: [
         { required: true, message: "Veuillez saisir votre nom" },
