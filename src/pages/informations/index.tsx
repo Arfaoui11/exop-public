@@ -1,6 +1,6 @@
 import BannerPage from "@src/components/Banner/BannerPage";
 import "animate.css/animate.min.css";
-import {Button, Col, Collapse, Grid, Row, Image, Typography, Alert, Skeleton} from "antd";
+import {Button, Col, Collapse, Grid, Row, Image, Typography, Alert, Skeleton, Tooltip} from "antd";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import {getPageContentInfoEndpoint} from "@src/api";
@@ -142,9 +142,11 @@ const Informations: React.FC<IMainLayoutProps> = () => {
                       <a  target="_blank" rel="">
                           {
                               data.mediaFileContent && (
-                                  <Button type="primary" ghost onClick={() => viewPdf(data.mediaFileContent)} icon={<FilePdfOutlined />}>
-                                      {data.contentValue}
-                                  </Button>
+                                  <Tooltip title={data.contentValue}>
+                                      <Button type="primary" ghost onClick={() => viewPdf(data.mediaFileContent)} icon={<FilePdfOutlined />}>
+                                          {data.contentValue}
+                                      </Button>
+                                  </Tooltip>
                               )
                           }
 
