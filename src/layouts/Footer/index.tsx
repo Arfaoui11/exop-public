@@ -80,13 +80,13 @@ const FooterBottom = () => {
             <div className="copyrightSection">
               <ul>
                 <li>
-                  <a>Termes et services</a>
+                  <Link href="/info?nav=terms"><span className="nav-text"> Termes et services</span></Link>
                 </li>
                 <li>
-                  <a>Vie privée</a>
+                  <Link href="/info?nav=privacy"><span className="nav-text">Vie privée</span></Link>
                 </li>
                 <li>
-                  <a>Cookies</a>
+                  <Link href="/info?nav=notice"><span className="nav-text">Cookies</span></Link>
                 </li>
               </ul>
             </div>

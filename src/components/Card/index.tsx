@@ -136,7 +136,7 @@ const Box = () => {
               />
             </div>
             <h3>{title}</h3>
-            <p>{paragraph}</p>
+            <p className="text-align">{paragraph}</p>
           </div>
         ))}
       </Carousel>

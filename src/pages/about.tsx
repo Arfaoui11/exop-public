@@ -39,7 +39,7 @@ export default function Home() {
       <BannerPage title="Connaitre EXOP" />
       {page?.pageContents ? (
         <div>
-          <div className="content-wrapper page-section">
+          <div className="content-wrapper page-section text-align">
             <Title level={5}>
               <div
                 dangerouslySetInnerHTML={{
@@ -51,7 +51,7 @@ export default function Home() {
           <div className="content-wrapper page-section">
             <Title level={3}>Points forts et principales fonctionnalités</Title>
             <Divider />
-            <Row justify="center" align="middle">
+            <Row >
               <Col xs={24} md={12}>
                 <Paragraph>
                   <div

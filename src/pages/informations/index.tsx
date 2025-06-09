@@ -1,6 +1,6 @@
 import BannerPage from "@src/components/Banner/BannerPage";
 import "animate.css/animate.min.css";
-import {Button, Col, Collapse, Grid, Row, Image, Typography, Alert, Skeleton} from "antd";
+import {Button, Col, Collapse, Grid, Row, Image, Typography, Alert, Skeleton, Tooltip} from "antd";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import {getPageContentInfoEndpoint} from "@src/api";
@@ -62,9 +62,10 @@ const Informations: React.FC<IMainLayoutProps> = () => {
                         <Title level={5} className="pb-3">
                             <Row justify="center" align="top">
                                 <Image
-                                    style={{ width: "174px", height: "auto" }}
+                                    style={{ width: "300px", height: "auto" }}
                                     src={`data:image/jpeg;base64,${section.mediaFileContent}` }
                                     alt=""
+                                    preview={false}
                                     className="pb-3"
                                 />
                             </Row>
@@ -141,9 +142,11 @@ const Informations: React.FC<IMainLayoutProps> = () => {
                       <a  target="_blank" rel="">
                           {
                               data.mediaFileContent && (
-                                  <Button type="primary" ghost onClick={() => viewPdf(data.mediaFileContent)} icon={<FilePdfOutlined />}>
-                                      {data.contentValue}
-                                  </Button>
+                                  <Tooltip title={data.contentValue}>
+                                      <Button type="primary" ghost onClick={() => viewPdf(data.mediaFileContent)} icon={<FilePdfOutlined />}>
+                                          {data.contentValue}
+                                      </Button>
+                                  </Tooltip>
                               )
                           }
 
@@ -155,25 +158,29 @@ const Informations: React.FC<IMainLayoutProps> = () => {
       case "QUESTION": {
         return data.answer && (
             <Col span={24}>
-              {data.answer.title}
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: data.answer.title || "",
+                    }}
+                />
             </Col>
         )
       }
-      default:
-        return null;
+        default:
+            return null;
     }
   }
 
-  return (
-    <>
-      <Head>
-        <title>EXPO | Informations Utiles</title>
-      </Head>
-      <BannerPage title="Informations Utiles" />
+    return (
+        <>
+            <Head>
+                <title>EXPO | Informations Utiles</title>
+            </Head>
+            <BannerPage title="Informations Utiles" />
         {
             page?.sections ?
                 (
-                    <div className="content-wrapper page-section">
+                    <div className="content-wrapper page-section text-align">
                         {!!page && renderCollapseItem(page.sections)}
 
                         {error && <Alert message={error} type="error"/>}
