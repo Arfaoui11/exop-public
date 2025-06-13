@@ -7,8 +7,10 @@ import "animate.css/animate.min.css";
 import { Alert, Button, Form, Input, Modal, Upload } from "antd";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import {AxiosResponse} from "axios";
+import { AxiosResponse } from 'axios';
 import {sendClaim} from "@src/api/content-management";
+
+
 
 export default function Claims() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -16,49 +18,34 @@ export default function Claims() {
   const [error, setError] = useState<string>();
   const { Item } = Form;
   const router = useRouter();
-  const forbiddenExtensions = ['.exe', '.msi', '.bat', '.cmd', '.sh', '.zip', '.rar', '.7z', '.tar.gz', '.tgz', '.tar.bz2' ];
 
   async function submit(values: ClaimType) {
     setIsLoading(true);
     const formData = new FormData();
-    let forbiddenFile= false;
 
     if (values.files) {
-        values.files.fileList.forEach((file: any) => {
-        const fileExtension = file.name.slice(((file.name.lastIndexOf(".") - 1) >>> 0) + 2);
-          if (forbiddenExtensions.includes('.' + fileExtension)) {
-            forbiddenFile = true;
-          }
-      });
-    }
-
-    if (forbiddenFile) {
-        setError("Les documents zippés ou compressés ou à exécuter ne sont pas autorisés.");
-        setIsLoading(false);
-    }
-    else{
-      if (values.files) {
-        values.files.fileList.forEach((file) => {
+      values.files.fileList.forEach((file) => {
         formData.append(`files`, file.originFileObj);
       });
-      }
+    }
 
     delete values.files;
     formData.append("properties", JSON.stringify(values));
-      try {
-
-        const res : AxiosResponse<ClaimType> = await sendClaim(formData);
-        // Handle the data as needed (e.g., set it in state)
-        if (res.data)
-        {
-          setIsModalOpen(true);
-        }
-      } catch (error) {
-        setError("Network Error");
-        setIsLoading(false);
+    try {
+      const res: AxiosResponse<ClaimType> = await sendClaim(formData);
+      if (res.data) {
+        setIsModalOpen(true);
       }
+    } catch (error : any) {
+      if (error.general && error.general[0]  === 'ERROR_EXTENSIONS_NOT_SUPPORTED') {
+        setError("Erreur extensions non prises en charge");
+      }else {
+        setError("Network Error");
+      }
+      setIsLoading(false);
     }
   }
+
 
   const handleOk = () => {
     setIsLoading(false);
