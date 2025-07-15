@@ -7,6 +7,7 @@ import axios, {
 import {parseAxiosError} from "@src/utils/errors-utils";
 
 
+
 // ********************** //
 // ********************** //
 // ********************** //
@@ -14,9 +15,11 @@ import {parseAxiosError} from "@src/utils/errors-utils";
 // * Server API Instance
 const axiosApiInstance = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_BACKEND_API_URL}`,
+    withCredentials: true,
 });
 const axiosPublicInstance = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_BACKEND_API_PUBLIC_URL}`,
+    withCredentials: true,
 });
 
 axiosApiInstance.interceptors.request.use(
