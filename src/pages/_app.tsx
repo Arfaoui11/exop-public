@@ -2,6 +2,7 @@ import Layout from "@src/layouts/Layouts";
 import "@src/styles/services.less";
 import "@src/styles/styles.less";
 import type { AppProps } from "next/app";
+import Cookies from 'js-cookie';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "../components/Banner/BannerPage/styles.less";
@@ -15,10 +16,20 @@ import "../pages/informations/styles.less";
 import "../styles/claims-styles.less";
 import "./global.less";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (
+function App({ Component, pageProps }: AppProps) {
+    Cookies.set(
+        process.env.NEXT_PUBLIC_COOKIE_CREDENTIAL || '',
+        process.env.NEXT_PUBLIC_COOKIE_VALUE || '',
+        {
+            path: '/',
+            domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN || '',
+        }
+    );
+
+    return (
       <Layout>
         <Component {...pageProps} />
       </Layout>
   );
 }
+export default App;
