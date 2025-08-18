@@ -15,8 +15,15 @@ import "../layouts/Header/styles.less";
 import "../pages/informations/styles.less";
 import "../styles/claims-styles.less";
 import "./global.less";
+import {useRouter} from "next/router";
+import {usePathname} from "next/navigation";
+import {useEffect} from "react";
+
+
 
 function App({ Component, pageProps }: AppProps) {
+    const router = useRouter();
+    const pathname = usePathname();
     Cookies.set(
         process.env.NEXT_PUBLIC_COOKIE_CREDENTIAL || '',
         process.env.NEXT_PUBLIC_COOKIE_VALUE || '',
@@ -25,6 +32,13 @@ function App({ Component, pageProps }: AppProps) {
             domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN || '',
         }
     );
+
+    useEffect(() => {
+        const routes = ["/regulations", "/informations", "/services", "/about", "/claims"];
+        const matchedRoute = routes.find((route) => pathname.includes(route));
+
+        router.push(matchedRoute ?? "/");
+    }, [pathname, router]);
 
     return (
       <Layout>
