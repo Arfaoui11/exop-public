@@ -38,7 +38,7 @@ function App({ Component, pageProps }: AppProps) {
         const matchedRoute = routes.find((route) => pathname.includes(route));
 
         router.push(matchedRoute ?? "/");
-    }, [pathname, router]);
+    }, []);
 
     return (
       <Layout>
