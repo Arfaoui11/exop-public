@@ -125,7 +125,7 @@ export default function Regulations() {
   return (
     <>
       <Head>
-        <title>EXPO | Réglementations</title>
+        <title>Exop | Réglementations</title>
       </Head>
       <BannerPage title={mappedData.title || ""} />
       {

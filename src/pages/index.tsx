@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>EXPO | Accueil</title>
+        <title>Exop | Accueil</title>
       </Head>
       {page?.pageContents ? (
         <>

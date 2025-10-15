@@ -34,9 +34,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>EXPO | Connaitre EXOP</title>
+        <title>Exop | Connaitre Exop</title>
       </Head>
-      <BannerPage title="Connaitre EXOP" />
+      <BannerPage title="Connaitre Exop" />
       {page?.pageContents ? (
         <div>
           <div className="content-wrapper page-section text-align">

@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <>
       <Head>
-        <title>EXPO | 404</title>
+        <title>Exop | 404</title>
       </Head>
       <BannerPage title="404" />
       <div className='content-wrapper page-section error-page'>

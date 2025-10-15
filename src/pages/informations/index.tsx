@@ -174,7 +174,7 @@ const Informations: React.FC<IMainLayoutProps> = () => {
     return (
         <>
             <Head>
-                <title>EXPO | Informations Utiles</title>
+                <title>Exop | Informations Utiles</title>
             </Head>
             <BannerPage title="Informations Utiles" />
         {

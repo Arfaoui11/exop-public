@@ -18,9 +18,8 @@ export default function Services() {
   }, []);
   const getPage = async () => {
     try {
-      const res: AxiosResponse<PublicPageType> = await getPageContentEndpoint(
-        "E_SERVICES"
-      );
+      const res: AxiosResponse<PublicPageType> =
+        await getPageContentEndpoint("E_SERVICES");
 
       // Handle the data as needed (e.g., set it in state)
       setPage(res.data);
@@ -33,7 +32,7 @@ export default function Services() {
   return (
     <>
       <Head>
-        <title>EXPO | E-services</title>
+        <title>Exop | E-services</title>
       </Head>
       <BannerPage title="E-services" />
       {page?.pageContents ? (
