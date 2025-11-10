@@ -1,5 +1,6 @@
 import { getPageContentEndpoint } from "@src/api";
 import BannerPage from "@src/components/Banner/BannerPage";
+import { RichTextDisplay } from "@src/components/RichTextEditorDisplay";
 import { PublicPageType } from "@src/types/page";
 import { mapContentToFormObject } from "@src/utils/methods";
 import "animate.css/animate.min.css";
@@ -41,11 +42,7 @@ export default function Home() {
         <div>
           <div className="content-wrapper page-section text-align">
             <Title level={5}>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: mappedData.paragraphe_1 || "",
-                }}
-              />
+              <RichTextDisplay htmlContent={mappedData.paragraphe_1 || ""} />
             </Title>
           </div>
           <div className="content-wrapper page-section">
@@ -54,11 +51,7 @@ export default function Home() {
             <Row >
               <Col xs={24} md={12}>
                 <Paragraph>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: mappedData.paragraphe_2 || "",
-                    }}
-                  />
+                  <RichTextDisplay htmlContent={mappedData.paragraphe_2 || ""} />
                 </Paragraph>
               </Col>
               <Col xs={24} md={12} style={{ textAlign: "right" }}>

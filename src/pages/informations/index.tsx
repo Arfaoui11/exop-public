@@ -1,12 +1,13 @@
+import { FilePdfOutlined } from "@ant-design/icons";
+import { getPageContentInfoEndpoint } from "@src/api";
 import BannerPage from "@src/components/Banner/BannerPage";
+import { RichTextDisplay } from "@src/components/RichTextEditorDisplay";
+import { IChildType, UtilInformationType } from "@src/utils/types";
 import "animate.css/animate.min.css";
-import {Button, Col, Collapse, Grid, Row, Image, Typography, Alert, Skeleton, Tooltip} from "antd";
+import { Alert, Button, Col, Collapse, Grid, Image, Row, Skeleton, Tooltip, Typography } from "antd";
+import { AxiosResponse } from "axios";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import {getPageContentInfoEndpoint} from "@src/api";
-import {IChildType, UtilInformationType} from "@src/utils/types";
-import { FilePdfOutlined} from "@ant-design/icons";
-import {AxiosResponse} from "axios";
 
 const { Paragraph, Title } = Typography;
 interface IMainLayoutProps {}
@@ -158,11 +159,7 @@ const Informations: React.FC<IMainLayoutProps> = () => {
       case "QUESTION": {
         return data.answer && (
             <Col span={24}>
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: data.answer.title || "",
-                    }}
-                />
+                <RichTextDisplay htmlContent={data.answer.title || ""} />
             </Col>
         )
       }

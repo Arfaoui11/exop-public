@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react";
-import Head from "next/head";
-import {Alert, Col, Layout, Menu, Row, Skeleton, Typography} from "antd";
-import {AxiosResponse} from "axios";
-import {getPageContentEndpoint} from "@src/api";
-import {PageContentType, PublicPageType} from "@src/types/page";
-import {useRouter} from "next/router";
+import { getPageContentEndpoint } from "@src/api";
 import BannerPage from "@src/components/Banner/BannerPage";
+import { RichTextDisplay } from "@src/components/RichTextEditorDisplay";
+import { PageContentType, PublicPageType } from "@src/types/page";
+import { Alert, Col, Layout, Menu, Row, Skeleton, Typography } from "antd";
+import { AxiosResponse } from "axios";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
 const {Sider} = Layout;
 const {Title} = Typography;
@@ -96,11 +97,7 @@ const Info: React.FC = () => {
                                         <Title level={3}>{contentItem.title}</Title>
                                     </Col>
                                     <Col xs={24} lg={24}>
-                                        <div
-                                            dangerouslySetInnerHTML={{
-                                                __html: contentItem.contentValue || "",
-                                            }}
-                                        />
+                                      <RichTextDisplay htmlContent={contentItem.contentValue || ""} />
                                     </Col>
                                 </Row>
                             ) : (
@@ -121,4 +118,3 @@ const Info: React.FC = () => {
 };
 
 export default Info;
-
