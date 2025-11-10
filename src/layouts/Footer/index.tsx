@@ -74,7 +74,7 @@ const FooterBottom = () => {
         </Row>
         <Row className="copyrightSection">
           <Col className="copyright" xs={24} sm={24} md={12}>
-            © {new Date().getFullYear()} BCT. Tous droits réserves.
+            © {new Date().getFullYear()} BCT. Tous droits réservés.
           </Col>
           <Col xs={24} sm={24} md={12}>
             <div className="copyrightSection">
