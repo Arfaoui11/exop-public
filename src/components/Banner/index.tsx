@@ -1,8 +1,6 @@
 import {Button, Col, Row} from "antd";
-import Image from "next/image";
 import Link from "next/link";
 import { AnimationOnScroll } from "react-animation-on-scroll";
-import Background from "../../assets/images/banner.gif";
 import React from "react";
 import {FormObjectType} from "@src/utils/methods";
 import {TopIcon} from "@src/assets/icons";
@@ -69,13 +67,6 @@ export default function Banner({content } :bannerType) {
                     </Col>
                   </div>
                 </div>
-              </Col>
-              <Col xs={0} md={12} style={{ height: "100%" }}>
-                <Image
-                  alt="banner"
-                  src={Background}
-                  style={{ height: "95%", width: "auto" }}
-                />
               </Col>
             </Row>
           </div>
